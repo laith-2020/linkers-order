@@ -52,15 +52,15 @@
 @import url(https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i);
 
 /*------------------------------------------------------------------
-		2. IMPORT FILES
-	-------------------------------------------------------------------*/
+            2. IMPORT FILES
+        -------------------------------------------------------------------*/
 
 @import url(animate.css);
 @import url(font-awesome.min.css);
 
 /*------------------------------------------------------------------
-		3. BASIC
-	-------------------------------------------------------------------*/
+            3. BASIC
+        -------------------------------------------------------------------*/
 
 * {
     margin: 0;
@@ -793,8 +793,8 @@ hr.dottad_border {
 
 
 /*------------------------------------------------------------------
-		4. LOADER
-	-------------------------------------------------------------------*/
+            4. LOADER
+        -------------------------------------------------------------------*/
 
 .bg_load {
     float: left;
@@ -877,8 +877,8 @@ hr.dottad_border {
 
 
 /*------------------------------------------------------------------
-		5. HEADER
-	-------------------------------------------------------------------*/
+            5. HEADER
+        -------------------------------------------------------------------*/
 
 
 /*----- header fix -----*/
@@ -1433,8 +1433,8 @@ footer,
 
 
 /*------------------------------------------------------------------
-		6. SLIDER PARALLAX
-	-------------------------------------------------------------------*/
+            6. SLIDER PARALLAX
+        -------------------------------------------------------------------*/
 
 #full_slider.full_slider_inner {
     position: relative;
@@ -1579,8 +1579,8 @@ body.light_blue #full_slider.full_slider_inner {
 
 
 /*------------------------------------------------------------------
-		7. SECTION
-	-------------------------------------------------------------------*/
+            7. SECTION
+        -------------------------------------------------------------------*/
 
 .padding_layout_1 {
     padding-top: 120px;
@@ -2308,8 +2308,8 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-		8. SLIDER
-	-------------------------------------------------------------------*/
+            8. SLIDER
+        -------------------------------------------------------------------*/
 
 .only_icon_slider .carousel-indicators {
     bottom: -53px;
@@ -2385,8 +2385,8 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-		9. ACCORDION
-	-------------------------------------------------------------------*/
+            9. ACCORDION
+        -------------------------------------------------------------------*/
 
 #accordion {
     margin: 15px 0 0 0;
@@ -2523,8 +2523,8 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-		10. PRICE TABLE
-	-------------------------------------------------------------------*/
+            10. PRICE TABLE
+        -------------------------------------------------------------------*/
 
 .price_table_inner {
     float: left;
@@ -2649,8 +2649,8 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-		11. INNER PAGE BANNER
-	-------------------------------------------------------------------*/
+            11. INNER PAGE BANNER
+        -------------------------------------------------------------------*/
 
 #default_theme .banner_slider {
     min-height: 270px;
@@ -2685,8 +2685,8 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-		12. SIDEBAR
-	-------------------------------------------------------------------*/
+            12. SIDEBAR
+        -------------------------------------------------------------------*/
 
 .side_bar h4 {
     margin-top: 0;
@@ -2821,8 +2821,8 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-		13. BLOG
-	-------------------------------------------------------------------*/
+            13. BLOG
+        -------------------------------------------------------------------*/
 
 .blog_section {
     margin-bottom: 50px;
@@ -3019,8 +3019,8 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-		14. CASE STUDIES
-	-------------------------------------------------------------------*/
+            14. CASE STUDIES
+        -------------------------------------------------------------------*/
 
 .case_studies_box {
     margin: 0 0 30px 0;
@@ -3098,8 +3098,8 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-		15. SHOP
-	-------------------------------------------------------------------*/
+            15. SHOP
+        -------------------------------------------------------------------*/
 
 .product_list {
     min-height: 400px;
@@ -3203,8 +3203,8 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-	17. TESTMONIAL 
-	-------------------------------------------------------------------*/
+        17. TESTMONIAL 
+        -------------------------------------------------------------------*/
 
 .testmonial_section {
     background-image: url('../images/it_service/test_bg.png');
@@ -3220,8 +3220,8 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-		16. FOOTER
-	-------------------------------------------------------------------*/
+            16. FOOTER
+        -------------------------------------------------------------------*/
 
 footer {
     background: #632e62;
@@ -3459,8 +3459,8 @@ footer ul.social_icons {
 
 
 /*------------------------------------------------------------------
-		17. CUSTOM
-	-------------------------------------------------------------------*/
+            17. CUSTOM
+        -------------------------------------------------------------------*/
 
 .service_blog_inner .icon img {
     width: 65px;
@@ -5002,24 +5002,25 @@ h3:after {
     position: relative;
     height: 250px;
     width: 600px;
-    margin-top: 20px;
-    /* margin-left: 48%; */
+    margin-top: 70px;
+    margin-bottom: 115px;
     background-color: #FFF;
-    -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 5px 5px 60px 0px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: 5px 5px 60px 0px rgba(0, 0, 0, 0.45);
+    box-shadow: 4px 4px 40px 0px rgba(0, 0, 0, 0.45);
 }
 
 .card-b {
     position: relative;
     height: 250px;
     width: 600px;
-    margin-top: 20px;
+    margin-top: 70px;
+    margin-bottom: 115px;
     margin-left: 48%;
     background-color: #FFF;
-    -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 5px 5px 60px 0px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: 5px 5px 60px 0px rgba(0, 0, 0, 0.45);
+    box-shadow: 4px 4px 40px 0px rgba(0, 0, 0, 0.45);
 }
 
 
@@ -5031,10 +5032,10 @@ h3:after {
     left: 30px;
     top: -30px;
     height: 310px;
-    width: 280px;
-    -webkit-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+    width: 45%;
+    -webkit-box-shadow: 5px 5px 60px 0px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: 5px 5px 60px 0px rgba(0, 0, 0, 0.45);
+    box-shadow: 4px 4px 40px 0px rgba(0, 0, 0, 0.45);
     overflow: hidden;
 }
 
@@ -5096,16 +5097,10 @@ img.left {
 
 /* //////////////////////// Step By Step //////////////////  */
 
-section {
-    padding: 100px 0;
-}
 
-h1 {
-    font-size: 200%;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 400;
-}
+/* section {
+    padding: 100px 0;
+} */
 
 .timeline {
     position: relative;
@@ -5186,30 +5181,6 @@ h1 {
     margin-left: -15px;
 }
 
-
-/* a {
-    background: #3f51b5;
-    color: #fff;
-    padding: 8px 20px;
-    text-transform: uppercase;
-    font-size: 14px;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    display: inline-block;
-    border-radius: 2px;
-    box-shadow: 0 1px 3px -1px rgba(0, 0, 0, .6);
-} */
-
-
-/* 
-a:hover,
-a:active,
-a:focus {
-    background: #32408f;
-    color: #fff;
-    text-decoration: none;
-} */
-
 .timeline-card {
     padding: 0 !important;
 }
@@ -5224,9 +5195,9 @@ a:focus {
 
 
 /* .timeline-item .timeline-img-header {
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .4)), url('https://picsum.photos/1000/800/?random') center center no-repeat;
-    background-size: cover;
-} */
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .4)), url('https://picsum.photos/1000/800/?random') center center no-repeat;
+        background-size: cover;
+    } */
 
 .timeline-img-header {
     height: 200px;
@@ -5291,18 +5262,30 @@ blockquote {
 
 .orderOnline {
     /* margin: auto auto;*/
-    margin-left: 20%;
-    margin-top: 100px;
+    margin-left: 15%;
+    margin-top: 50px;
+    width: 100%;
+    /* height: 500px; */
+    color: black;
+    margin-bottom: 100px;
+    overflow: hidden;
 }
 
 #order {
-    width: 300px;
+    width: 500px;
     padding: 20px;
     float: left;
+    margin-right: 20px;
 }
 
 #grow {
-    font-size: 30px
+    font-size: 40px;
+    line-height: 3rem;
+}
+
+#paragraph2 {
+    font-size: 20px;
+    line-height: 1.5rem;
 }
 
 .order {
@@ -5311,28 +5294,15 @@ blockquote {
 }
 
 
-/* ////////// order ////  */
-
-.mySlides {
+/* .mySlides {
     display: none;
-}
+} */
 
-
-/* img {vertical-align: middle;} */
-
-
-/* Slideshow container */
-
-.slideshow-container {
-    /* max-width: 300px; */
-    height: 500px;
+.imgs {
+    padding: 20px;
     width: 500px;
-    /* position: relative; */
-    /* margin: auto; */
+    height: 350px;
 }
-
-
-/* The dots/bullets/indicators */
 
 .dot {
     /* height: 15px; */
@@ -5340,7 +5310,7 @@ blockquote {
     margin: 0 2px;
     /* background-color: gray; */
     border-radius: 50%;
-    display: inline-block;
+    /* display: inline-block; */
     transition: background-color 0.6s ease;
 }
 
@@ -5360,7 +5330,7 @@ blockquote {
 
 @-webkit-keyframes fade {
     from {
-        opacity: .4
+        opacity: .9
     }
     to {
         opacity: 1
@@ -5369,7 +5339,7 @@ blockquote {
 
 @keyframes fade {
     from {
-        opacity: .4
+        opacity: .9
     }
     to {
         opacity: 1
