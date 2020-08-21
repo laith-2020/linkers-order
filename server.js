@@ -27,7 +27,6 @@ app.get('/', (req, res) => {
                 });
                 return new Category(item);
             })
-            console.log('soso', array);
             let resultOBJ = new Restorant(result.body);
             res.render("index", { resultKey: resultOBJ, categoryKey: array, productKey: resultData });
         })
@@ -49,6 +48,10 @@ function Restorant(data) {
 function Category(data) {
     this.category = data.category;
     this.productName = data.productName;
+    this.description = data.description;
+    this.price = data.price;
+    this.productImages = `http://orderlink.linkers.io:8096${data.productImages}`;
+
 }
 
 

@@ -90,7 +90,6 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal
 btn.onclick = function() {
-        console.log('lolo')
         modal.style.display = "block";
     }
     // When the user clicks on <span> (x), close the modal
@@ -98,13 +97,19 @@ span.onclick = function() {
     modal.style.display = "none";
 }
 
-// $('#myBtn').onclick(() => {
-
-//     console.log('Soso');
-// })
 
 
-$("#myBtn").click(function() {
-    // alert("The paragraph was clicked.");
-    console.log('sososososo');
+$("#productPage").hide();
+$(".theProduct").click(function(event) {
+    console.log("event", event.target.id);
+
+    var productId = event.target.id;
+    var imgID = event.target.id;
+    console.log(imgID);
+
+    $("#productName").html(productId);
+    $("#productimg").attr('src', imgID);
+
+    var x = $("#productPage").html();
+    $(".modal-body").html(x);
 });

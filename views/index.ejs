@@ -339,26 +339,36 @@
                 </p>
                 <p>
                     Delivery Time :
-                    <%=resultKey.deliveryTime %> Minimum Order
-                        <%=resultKey.minimumOrder %> Min
+                    <%=resultKey.deliveryTime %> Min
+                        <%=resultKey.minimumOrder %> Minimum Order
                 </p>
                 <hr>
-                <%categoryKey.forEach(item => {%>
-
-                    <p id="categoryName">
-                        <%=item%>
-                            <%productKey.forEach(item => {%>
 
 
-                                <p>
-                                    <%=item.productName%>
+                <%categoryKey.map(key=> {%>
+                    <li>
+                        <%=key%>
+                            <%productKey.map(item => {%>
+                                <div id="<%=item.productName%><%=item.productImages%>" class="theProduct">
+                                    <% if(item.category === key){ %>
+                                        <p>
+                                            <%=item.productName%>
+                                        </p>
+                                        <p>
+                                            <%=item.description%>
+                                        </p>
+                                        <p>
+                                            Price :
+                                            <%=item.price%>
+                                        </p>
 
-                                </p>
-                                <%})%>
-
-                    </p>
-                    <%})%>
-
+                                        <img id="<%=item.productImages%>" src="<%=item.productImages%>" style="width: 150px; height: 150px; border-radius: 10%; ">
+                                </div>
+                                <hr>
+                                <%}%>
+                                    <%})%>
+                                        <% })%>
+                    </li>
 
             </div>
             <div class="modal-footer">
@@ -368,13 +378,34 @@
     </div>
 
 
+    <div id="productPage">
+        <h1 id="productName"></h1>
+        <img id="productimg" src="" style="width: 150px; height: 150px; border-radius: 10%; ">
+
+        <p>soso and lolo</p>
+    </div>
+
+
+
+
     <div class="orderOnline">
         <div id='order'>
             <p id='grow'>Grow your revenue with new sales channels</p>
             <p id="paragraph2">
                 Get commission-free orders from all your online channels with a world-class ordering system integrated with your website, Instagram, Facebook, Messenger or WhatsApp.
             </p>
-            <button id="myBtn">Open Modal</button>
+
+            <div class="wrapper">
+                <button id="myBtn">
+                  Order Now! 
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+            </div>
+
+
         </div>
     </div>
     <div id="ProSlider">
