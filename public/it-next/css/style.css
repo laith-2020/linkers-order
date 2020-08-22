@@ -6,7 +6,7 @@
 /*------------------------------------------------------------------
 		[Table of contents]
 
-		1.  IMPORT FONTS
+
     2.  IMPORT FILES
 	3.  BASIC
     4.  LOADER
@@ -42,21 +42,13 @@
 
 
 /*------------------------------------------------------------------
-		1. IMPORT FONTS
-	-------------------------------------------------------------------*/
-
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700,900);
-@import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,700i);
-@import url(https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i);
-
-/*------------------------------------------------------------------
             2. IMPORT FILES
         -------------------------------------------------------------------*/
 
 @import url(animate.css);
-@import url(font-awesome.min.css);
+
+/* @import url(font-awesome.min.css); */
+
 
 /*------------------------------------------------------------------
             3. BASIC
@@ -69,11 +61,18 @@
     box-sizing: border-box;
 }
 
+body,
+input,
+textarea,
+button,
+select {
+    font-family: "Maven Pro", sans-serif;
+}
+
 html,
 body {
     color: #898989;
     font-size: 15px;
-    font-family: 'Raleway', sans-serif;
     line-height: normal;
     font-weight: 400;
     overflow-x: hidden;
@@ -128,6 +127,7 @@ h4,
 h5,
 h6 {
     letter-spacing: 0;
+    font-family: "Maven Pro", sans-serif;
     font-weight: normal;
     position: relative;
     padding: 0;
@@ -234,11 +234,10 @@ button.btn {
     border: solid transform 1px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, .5);
     position: relative;
-    font-family: 'Poppins', sans-serif;
 }
 
 .btn.dark_gray_bt {
-    background: #252525;
+    background: #A2A2A2;
 }
 
 a.btn.border_btn {
@@ -250,7 +249,7 @@ a.btn:hover,
 button.btn:hover,
 a.btn:focus,
 button.btn:focus {
-    background: #252525;
+    background: #A2A2A2;
     color: #fff;
 }
 
@@ -411,14 +410,6 @@ p.large_2 {
     font-weight: 500;
     font-size: 18px;
     color: #898989;
-}
-
-button,
-input,
-select,
-textarea,
-option {
-    font-family: 'Poppins', sans-serif;
 }
 
 a#submit {
@@ -808,6 +799,7 @@ hr.dottad_border {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #A2A2A2;
 }
 
 .loader_animation {
@@ -973,7 +965,6 @@ header .right_bt .btn {
     border-radius: 0;
     font-weight: 600;
     padding: 0 35px;
-    font-family: 'Raleway', sans-serif;
 }
 
 .topbar-left {
@@ -1363,13 +1354,11 @@ header .right_bt .btn {
 
 .header_bottom .info_cont h4 {
     font-size: 14px;
-    font-family: poppins;
     font-weight: 500;
 }
 
 .header_bottom .information_bottom p {
     color: #737373;
-    font-family: poppins;
     font-size: 14px;
 }
 
@@ -1584,7 +1573,7 @@ body.light_blue #full_slider.full_slider_inner {
 
 .padding_layout_1 {
     padding-top: 120px;
-    padding-bottom: 115px;
+    padding-bottom: 46px;
 }
 
 .padding_layout_2 {
@@ -1950,7 +1939,6 @@ section.dottad_star_bg {
 
 .adress_cont .info_cont h4 {
     font-size: 14px;
-    font-family: poppins;
     font-weight: 500;
 }
 
@@ -2622,7 +2610,6 @@ span.skill {
 
 .price_no {
     font-weight: 500;
-    font-family: poppins;
     font-size: 55px;
 }
 
@@ -2893,7 +2880,6 @@ span.skill {
 
 .read_more {
     font-weight: 600;
-    font-family: 'Poppins', sans-serif;
 }
 
 .read_more:hover,
@@ -3936,7 +3922,6 @@ footer ul.social_icons {
 }
 
 .product_detail_page .tab_bar_section ul.nav.nav-tabs li a {
-    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     font-weight: 400;
     padding: 0 30px;
@@ -4002,7 +3987,6 @@ footer ul.social_icons {
 }
 
 .product_detail .tab_bar_section ul.nav.nav-tabs li a {
-    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     font-weight: 400;
     padding: 0 25px;
@@ -4160,7 +4144,6 @@ footer ul.social_icons {
     font-size: 16px;
     font-weight: 400;
     color: #333;
-    font-family: poppins;
 }
 
 .product-table table.table thead th {
@@ -4812,9 +4795,7 @@ footer ul.social_icons {
     width: 100%;
     height: 500px;
     position: relative;
-    font-family: 'Droid Serif', serif;
     color: #fff;
-    /* top: 20%; */
     right: 0;
     left: 1%;
     margin-top: 70px;
@@ -4926,7 +4907,6 @@ h1 {
     font-size: 1.9em;
     font-weight: 400;
     letter-spacing: 1px;
-    font-family: 'Abril Fatface', serif;
     margin-bottom: 0;
     display: inline-block;
 }
@@ -5091,8 +5071,9 @@ img.left {
     color: #4B4B4B;
 }
 
-.theProduct {
-    background-color: #1f1f1f;
+.theProduct:hover {
+    background-color: rgba(8, 8, 8, 0.5);
+    /* background-color: gray; */
 }
 
 
@@ -5100,6 +5081,160 @@ img.left {
 
 
 /* //////////////////////// Step By Step //////////////////  */
+
+.sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+    transform: translate(50%, -50%);
+    margin-top: -114px;
+    letter-spacing: 2;
+    left: 50%;
+    top: 50%;
+    text-transform: uppercase;
+    font-size: 4em;
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #A2A2A2, -0.2rem 0.1rem 1rem #A2A2A2, 0.2rem 0.1rem 1rem #A2A2A2, 0 -0.5rem 2rem #A2A2A2, 0 0.5rem 3rem #A2A2A2;
+    animation: shine 2s forwards, flicker 3s infinite;
+    padding-bottom: 80px;
+}
+
+@keyframes blink {
+    0%,
+    22%,
+    36%,
+    75% {
+        color: #ffe6ff;
+        text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #A2A2A2, -0.2rem 0.1rem 1rem #A2A2A2, 0.2rem 0.1rem 1rem #A2A2A2, 0 -0.5rem 2rem #A2A2A2, 0 0.5rem 3rem #A2A2A2;
+    }
+    28%,
+    33% {
+        color: #a6c627;
+        text-shadow: none;
+    }
+    82%,
+    97% {
+        color: #707070;
+        text-shadow: none;
+    }
+}
+
+.flicker {
+    animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.fast-flicker {
+    animation: shine 2s forwards, blink 10s 1s infinite;
+}
+
+@keyframes shine {
+    0% {
+        color: #a6c627;
+        text-shadow: none;
+    }
+    100% {
+        color: #ffe6ff;
+        text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #a6c627, -0.2rem 0.1rem 1rem #a6c627, 0.2rem 0.1rem 1rem #a6c627, 0 -0.5rem 2rem #a6c627, 0 0.5rem 3rem #a6c627;
+    }
+}
+
+@keyframes flicker {
+    from {
+        opacity: 1;
+    }
+    4% {
+        opacity: 0.9;
+    }
+    6% {
+        opacity: 0.85;
+    }
+    8% {
+        opacity: 0.95;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    11% {
+        opacity: 0.922;
+    }
+    12% {
+        opacity: 0.9;
+    }
+    14% {
+        opacity: 0.95;
+    }
+    16% {
+        opacity: 0.98;
+    }
+    17% {
+        opacity: 0.9;
+    }
+    19% {
+        opacity: 0.93;
+    }
+    20% {
+        opacity: 0.99;
+    }
+    24% {
+        opacity: 1;
+    }
+    26% {
+        opacity: 0.94;
+    }
+    28% {
+        opacity: 0.98;
+    }
+    37% {
+        opacity: 0.93;
+    }
+    38% {
+        opacity: 0.5;
+    }
+    39% {
+        opacity: 0.96;
+    }
+    42% {
+        opacity: 1;
+    }
+    44% {
+        opacity: 0.97;
+    }
+    46% {
+        opacity: 0.94;
+    }
+    56% {
+        opacity: 0.9;
+    }
+    58% {
+        opacity: 0.9;
+    }
+    60% {
+        opacity: 0.99;
+    }
+    68% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.9;
+    }
+    72% {
+        opacity: 0.95;
+    }
+    93% {
+        opacity: 0.93;
+    }
+    95% {
+        opacity: 0.95;
+    }
+    97% {
+        opacity: 0.93;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
 .timeline {
     position: relative;
@@ -5255,37 +5390,23 @@ blockquote {
 /* ////////////  end step By Step ///////////  */
 
 .orderOnline {
-    /* margin: auto auto;*/
     margin-left: 12%;
     margin-top: 50px;
     width: 30%;
-    /* height: 500px; */
     color: black;
     margin-bottom: 100px;
     overflow: hidden;
     float: left;
 }
 
-
-/* 
-.wrapper{
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
-    height:auto;
-} */
-
 #myBtn {
-    width: 200px;
-    height: 70px;
+    width: 178px;
+    height: 50px;
     background: linear-gradient(to left top, #a6c627 50%, #a6c627 50%);
     border-style: none;
     color: #fff;
     font-size: 23px;
     letter-spacing: 3px;
-    font-family: 'Lato';
     font-weight: 600;
     outline: none;
     cursor: pointer;
@@ -5398,6 +5519,8 @@ blockquote {
 #ProSlider {
     float: right;
     width: 50%;
+    padding-bottom: 200px;
+    /* margin-bottom: 210px; */
 }
 
 #order {
@@ -5424,7 +5547,7 @@ blockquote {
 
 .imgs {
     margin-top: 65px;
-    width: 50%;
+    /* width: 50%; */
     /* height: 350px; */
 }
 

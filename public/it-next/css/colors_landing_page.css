@@ -172,8 +172,8 @@ body.light_blue button.btn.white_btn:hover,
 body.light_blue a.btn.white_btn:hover,
 body.light_blue button.btn.white_btn:focus,
 body.light_blue a.btn.white_btn:focus {
-    background: #632e62;
-    border-color: #632e62;
+    background: #A2A2A2;
+    border-color: #A2A2A2;
     color: #fff;
 }
 
@@ -192,7 +192,7 @@ button.btn.white_btn:hover,
 a.btn.white_btn:hover {
     color: #fff;
     text-transform: none;
-    background: #111;
+    background: #A2A2A2;
 }
 
 .tp-bannertimer {

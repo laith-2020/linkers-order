@@ -172,8 +172,8 @@ body.light_blue button.btn.white_btn:hover,
 body.light_blue a.btn.white_btn:hover,
 body.light_blue button.btn.white_btn:focus,
 body.light_blue a.btn.white_btn:focus {
-    background: #632e62;
-    border-color: #632e62;
+    background: #A2A2A2;
+    border-color: #A2A2A2;
     color: #fff;
 }
 
@@ -292,7 +292,7 @@ h6 a {
 }
 
 .make_appo .btn.white_btn {
-    background: #111;
+    background: #A2A2A2;
     color: #fff;
 }
 

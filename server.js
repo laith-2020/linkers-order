@@ -11,6 +11,11 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+let arr = ['hello'];
+
+
+
+
 
 app.get('/', (req, res) => {
 
@@ -27,6 +32,7 @@ app.get('/', (req, res) => {
                 });
                 return new Category(item);
             })
+            console.log(resultData);
             let resultOBJ = new Restorant(result.body);
             res.render("index", { resultKey: resultOBJ, categoryKey: array, productKey: resultData });
         })
@@ -51,11 +57,17 @@ function Category(data) {
     this.description = data.description;
     this.price = data.price;
     this.productImages = `http://orderlink.linkers.io:8096${data.productImages}`;
+    this.featureName = data.featuresList[0] ? data.featuresList[0].items.map(item => item.featureName) : 'nothing';
 
 }
 
 
 
-app.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`);
-});
+module.exports = {
+    test: arr,
+    server: app,
+    start: port => {
+        let PORT = port || process.env.PORT || 3000;
+        app.listen(PORT, () => console.log(`Hey all from ${PORT}`));
+    },
+};

@@ -100,15 +100,21 @@ span.onclick = function() {
 
 
 $("#productPage").hide();
+
 $(".theProduct").click(function(event) {
     console.log("event", event.target.id);
-
     var productId = event.target.id;
-    var imgID = event.target.id;
-    console.log(imgID);
+    var productNames = $(`#${productId} .productName`).html();
+    var productDescs = $(`#${productId} .productDesc`).html();
 
-    $("#productName").html(productId);
-    $("#productimg").attr('src', imgID);
+    var productImgs = $(`#${productId} .productImg`).attr('src');
+
+    // console.log(test2);
+
+    $("#productName").html(productNames);
+    $("#productDesc").html(productDescs);
+    $("#productimg").attr('src', productImgs);
+
 
     var x = $("#productPage").html();
     $(".modal-body").html(x);

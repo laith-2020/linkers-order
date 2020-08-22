@@ -14,7 +14,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="icon" href="/it-next/images/fevicon/fevicon.png" type="image/gif" />
+    <!-- <link rel="icon" href="/it-next/images/fevicon/fevicon.png" type="image/gif" /> -->
+    <link rel="icon" type="image/x-icon" href="/it-next/images/fevicon/fevicon.ico">
+
 
     <link rel="stylesheet" href="/it-next/css/bootstrap.min.css" />
 
@@ -36,7 +38,7 @@
 
 <body id="default_theme" class="it_service">
 
-    <div class="bg_load"> <img class="loader_animation" src="/it-next/images/loaders/loader_1.png" alt="#" /> </div>
+    <div class="bg_load"> <img class="loader_animation" src="/it-next/images/loaders/loader_1.png" alt="#" style="width: 300px; height: 300px;" /> </div>
 
 
     <header id="default_header" class="header_style_1">
@@ -50,7 +52,7 @@
                                 <ul class="list-inline">
                                     <li> <span class="topbar-label"><i class="fa  fa-home"></i></span> <span class="topbar-hightlight">linkers</span> </li>
                                     <li> <span class="topbar-label"><i class="fa fa-envelope-o"></i></span> <span class="topbar-hightlight"><a
-                                                href="mailto:info@yourdomain.com">linkers@linkers.com</a></span>
+                                                href="Info@linkers.io">Info@linkers.io</a></span>
                                     </li>
                                 </ul>
                             </div>
@@ -122,8 +124,8 @@
                 <div id="rev_slider_4_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="classicslider1" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
                     <div id="rev_slider_4_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.0.7">
                         <ul>
-                            <li data-index="rs-1812" data-transition="zoomin" data-slotamount="7" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-thumb="images/it_service/slide1.png" data-rotate="0" data-saveperformance="off" data-title="Computer Services"
-                                data-description="">
+                            <li data-index="rs-1812" data-transition="zoomin" data-slotamount="7" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-thumb="/it-next/images/it_service/slide1.png" data-rotate="0" data-saveperformance="off"
+                                data-title="Order Services" data-description="">
                                 <img src="/it-next/images/it_service/slide1.png" alt="#" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0"
                                     data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
 
@@ -138,8 +140,8 @@
                                     data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05" style="z-index: 6; white-space: nowrap;">Order Services
                                 </div>
                             </li>
-                            <li data-index="rs-181" data-transition="zoomin" data-slotamount="7" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-thumb="images/it_service/slide2.webp" data-rotate="0" data-saveperformance="off" data-title="Easy To Use & Customize"
-                                data-description="">
+                            <li data-index="rs-181" data-transition="zoomin" data-slotamount="7" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-thumb="/it-next/images/it_service/slide2.webp" data-rotate="0" data-saveperformance="off"
+                                data-title="Reduce Implementation Time" data-description="">
 
                                 <img src="/it-next/images/it_service/slide2.webp" alt="" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0"
                                     data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
@@ -154,7 +156,7 @@
                                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1000" data-splitin="chars"
                                     data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05" style="z-index: 6; white-space: nowrap;">Reduce Implementation Time </div>
                             </li>
-                            <li data-index="rs-18" data-transition="zoomin" data-slotamount="7" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-thumb="images/it_service/slide3.jpg" data-rotate="0" data-saveperformance="off" data-title="Perfectly Responsive"
+                            <li data-index="rs-18" data-transition="zoomin" data-slotamount="7" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-thumb="/it-next/images/it_service/slide3.jpg" data-rotate="0" data-saveperformance="off" data-title="Save Time"
                                 data-description="">
 
                                 <img src="/it-next/images/it_service/slide3.jpg" alt="" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0"
@@ -349,12 +351,12 @@
                     <li>
                         <%=key%>
                             <%productKey.map(item => {%>
-                                <div id="<%=item.productName%><%=item.productImages%>" class="theProduct">
+                                <div id="<%=item.productName.replace(/\s/g, '')%>" class="theProduct">
                                     <% if(item.category === key){ %>
-                                        <p>
+                                        <p class="productName">
                                             <%=item.productName%>
                                         </p>
-                                        <p>
+                                        <p class="productDesc">
                                             <%=item.description%>
                                         </p>
                                         <p>
@@ -362,7 +364,14 @@
                                             <%=item.price%>
                                         </p>
 
-                                        <img id="<%=item.productImages%>" src="<%=item.productImages%>" style="width: 150px; height: 150px; border-radius: 10%; ">
+                                        <img class="productImg" src="<%=item.productImages%>" style="width: 150px; height: 150px; border-radius: 10%; ">
+
+                                        <!-- <%item.featureName.forEach(itm => {%>
+                                            <li>
+                                                <%=itm%>
+                                            </li>
+                                            <%})%> -->
+
                                 </div>
                                 <hr>
                                 <%}%>
@@ -379,10 +388,18 @@
 
 
     <div id="productPage">
-        <h1 id="productName"></h1>
         <img id="productimg" src="" style="width: 150px; height: 150px; border-radius: 10%; ">
+        <h1 id="productName"></h1>
 
-        <p>soso and lolo</p>
+        <p id="productDesc"></p>
+        <hr>
+
+        <%productKey.map(item => {%>
+            <p>
+                <%=item.featureName%>
+            </p>
+            <%})%>
+
     </div>
 
 
@@ -397,10 +414,10 @@
 
             <div class="wrapper">
                 <button id="myBtn">
-                  Order Now! 
-                  <span></span>
-                  <span></span>
-                  <span></span>
+                    Order Now! 
+                    <span></span>
+                    <span></span>
+                    <span></span>
                   <span></span>
                 </button>
             </div>
@@ -408,16 +425,18 @@
 
         </div>
     </div>
+
+
     <div id="ProSlider">
 
         <div class="mySlides fade">
-            <img class="imgs" src="../it-next/images/it_service/card1.webp">
+            <img class="imgs" src="../it-next/images/it_service/card1.webp" style="width: 300px; height: 300px;">
         </div>
         <div class="mySlides fade">
-            <img class="imgs" src="../it-next/images/it_service/card3.webp">
+            <img class="imgs" src="../it-next/images/it_service/card3.webp" style="width: 300px; height: 300px;">
         </div>
         <div class="mySlides fade">
-            <img class="imgs" src="../it-next/images/it_service/slide1.png">
+            <img class="imgs" src="../it-next/images/it_service/slide1.png" style="width: 300px; height: 300px;">
         </div>
         <br>
         <div>
@@ -432,8 +451,14 @@
 
 
 
-
     <section id="sec" class="timeline">
+        <div>
+            <div class="sign">
+                <span class="fast-flicker">S</span>tep<span class="flicker">
+              <br>By</span>Step
+            </div>
+
+        </div>
         <div class="container">
             <div class="timeline-item">
                 <div class="timeline-img"></div>
@@ -489,7 +514,7 @@
             </div>
         </div>
     </section>
-    <hr>
+
 
 
 
