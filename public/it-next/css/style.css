@@ -5506,6 +5506,13 @@ blockquote {
     }
 }
 
+#leftArrow:hover,
+#leftArrow:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 #myBtn:hover {
     transition: all .5s;
     transform: rotate(0deg) scale(1.1);

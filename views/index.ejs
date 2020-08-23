@@ -382,14 +382,19 @@
 
                                         <img class="productImg" src="<%=item.productImages%>" style="width: 150px; height: 150px; border-radius: 10%; ">
 
-                                        <form class="featureName">
+                                        <form class="featureName2">
                                             <%item.featureName.forEach ((itm,idx) =>{%>
 
                                                 <input type="checkbox" id="featureName" name="featureName">
 
                                                 <%=itm%>
+                                                    <span>
+                                                        <%=item.extraPrice[idx]%> 
 
+                                                    </span>
                                                     <label for="featureName"> </label>
+                                                    <br>
+
                                                     <%})%>
 
                                         </form>
@@ -421,13 +426,11 @@
         <hr>
 
         <form>
-            <input type="checkbox" id="featureName" name="featureName" value="featureName">
-            <label for="featureName"> </label>
+            <!-- <input type="checkbox" name="featureName" value="featureName"> -->
+            <label class="featureName" for="featureName"> </label>
+            <br>
 
         </form>
-
-
-
 
 
 

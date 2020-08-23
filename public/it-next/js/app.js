@@ -101,7 +101,7 @@ span.onclick = function() {
 
 $("#productPage").hide();
 $("#leftArrow").hide();
-// $(".featureName").hide();
+$(".featureName2").hide();
 // $("#chartIcon").hide();
 
 var goBack = $(".modal-body").html();
@@ -111,9 +111,11 @@ var leftArrow = document.getElementById("leftArrow");
 
 $("#leftArrow").click(function() {
     console.log('arrow')
-        // modal.style.display = "block";
-        // var x = $(".modal-body").html();
-    $(".modal-body").html(goBack);
+    modal.style.display = "block";
+    // var x = $(".modal-body").html();
+    // $(".modal-body").html(goBack);
+    leftArrow.style.display = "none";
+
 })
 
 
@@ -124,15 +126,12 @@ $(".theProduct").click(function(event) {
     var productImgs = $(`#${productId} .productImg`).attr('src');
     var productNames = $(`#${productId} .productName`).html();
     var productDescs = $(`#${productId} .productDesc`).html();
-    var featureNames = $(`#${productId} .featureName`).html();
+    var featureNames = $(`#${productId} .featureName2`).html();
 
-
-
-    // console.log(test2);
 
     $("#productName").html(productNames);
     $("#productDesc").html(productDescs);
-    $("#featureName").html(featureNames);
+    $(".featureName").html(featureNames);
 
     $("#productimg").attr('src', productImgs);
 
