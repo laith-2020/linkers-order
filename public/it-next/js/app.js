@@ -100,22 +100,44 @@ span.onclick = function() {
 
 
 $("#productPage").hide();
+$("#leftArrow").hide();
+// $(".featureName").hide();
+// $("#chartIcon").hide();
+
+var goBack = $(".modal-body").html();
+
+var leftArrow = document.getElementById("leftArrow");
+
+
+$("#leftArrow").click(function() {
+    console.log('arrow')
+        // modal.style.display = "block";
+        // var x = $(".modal-body").html();
+    $(".modal-body").html(goBack);
+})
+
 
 $(".theProduct").click(function(event) {
     console.log("event", event.target.id);
     var productId = event.target.id;
-    var productNames = $(`#${productId} .productName`).html();
-    var productDescs = $(`#${productId} .productDesc`).html();
 
     var productImgs = $(`#${productId} .productImg`).attr('src');
+    var productNames = $(`#${productId} .productName`).html();
+    var productDescs = $(`#${productId} .productDesc`).html();
+    var featureNames = $(`#${productId} .featureName`).html();
+
+
 
     // console.log(test2);
 
     $("#productName").html(productNames);
     $("#productDesc").html(productDescs);
+    $("#featureName").html(featureNames);
+
     $("#productimg").attr('src', productImgs);
 
 
+    leftArrow.style.display = "block";
     var x = $("#productPage").html();
     $(".modal-body").html(x);
 });

@@ -5670,20 +5670,48 @@ blockquote {
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5CB85C;
+    background-color: #a6c627;
     color: white;
 }
 
 .modal-body {
-    padding: 2px 16px;
+    /* padding: 2px 16px; */
     /* height: 1000px; */
     background-color: white;
 }
 
+.shopName {
+    padding: 20px 0px 10px 20px;
+}
+
+.cityName {
+    padding: 0px 0px 10px 20px;
+}
+
+.deliveryTime {
+    padding: 0px 5px 0px 20px;
+    margin-right: 10px;
+}
+
 .modal-footer {
-    padding: 2px 16px;
-    background-color: #5CB85C;
+    /* padding: 2px 110px; */
+    background-color: #a6c627;
     color: white;
+    padding-right: 67px;
+}
+
+.footerCart {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartBtn {
+    color: black;
+    text-align: center;
+    width: 170px;
+    height: 45px;
 }
 
 

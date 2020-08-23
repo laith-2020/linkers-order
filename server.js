@@ -57,7 +57,7 @@ function Category(data) {
     this.description = data.description;
     this.price = data.price;
     this.productImages = `http://orderlink.linkers.io:8096${data.productImages}`;
-    this.featureName = data.featuresList[0] ? data.featuresList[0].items.map(item => item.featureName) : 'nothing';
+    this.featureName = data.featuresList[0] ? data.featuresList[0].items.map(item => item.featureName) : ['nothing'];
 
 }
 

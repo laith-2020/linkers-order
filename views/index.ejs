@@ -13,7 +13,6 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <!-- <link rel="icon" href="/it-next/images/fevicon/fevicon.png" type="image/gif" /> -->
     <link rel="icon" type="image/x-icon" href="/it-next/images/fevicon/fevicon.ico">
 
@@ -33,7 +32,20 @@
     <link rel="stylesheet" type="text/css" href="/it-next/revolution/css/settings.css" />
     <link rel="stylesheet" type="text/css" href="/it-next/revolution/css/layers.css" />
     <link rel="stylesheet" type="text/css" href="/it-next/revolution/css/navigation.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js">
 
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <style>
+        /* Set the size of the div element that contains the map */
+        
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
 </head>
 
 <body id="default_theme" class="it_service">
@@ -51,7 +63,7 @@
                             <div class="topbar-left">
                                 <ul class="list-inline">
                                     <li> <span class="topbar-label"><i class="fa  fa-home"></i></span> <span class="topbar-hightlight">linkers</span> </li>
-                                    <li> <span class="topbar-label"><i class="fa fa-envelope-o"></i></span> <span class="topbar-hightlight"><a
+                                    <li> <span class="topbar-label"><i class="fa fa-envelope"></i></span> <span class="topbar-hightlight"><a
                                                 href="Info@linkers.io">Info@linkers.io</a></span>
                                     </li>
                                 </ul>
@@ -63,16 +75,17 @@
                             <div class="social_icon">
                                 <ul class="list-inline">
                                     <li>
-                                        <a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook" target="_blank"></a>
+                                        <a class="fab fa-facebook" href="https://facebook.com/linkersIoT" title="Facebook" target="_blank"></a>
+                                    </li>
+
+                                    <li>
+                                        <a class="fab fa-twitter" href="https://twitter.com/linkersIoT" title="Twitter" target="_blank"></a>
                                     </li>
                                     <li>
-                                        <a class="fa fa-twitter" href="https://twitter.com" title="Twitter" target="_blank"></a>
+                                        <a class="fab fa-linkedin" href="ttps://www.linkedin.com/company/linkersiot" title="LinkedIn" target="_blank"></a>
                                     </li>
                                     <li>
-                                        <a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn" target="_blank"></a>
-                                    </li>
-                                    <li>
-                                        <a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram" target="_blank"></a>
+                                        <a class="fab fa-instagram" href="https://www.instagram.com/linkersIoT/" title="Instagram" target="_blank"></a>
                                     </li>
                                 </ul>
                             </div>
@@ -326,22 +339,25 @@
 
         <div class="modal-content">
             <div class="modal-header">
+                <i id="leftArrow" style='font-size:24px' class='fas'>&#xf104;</i>
+
                 <span class="close">&times;</span>
 
             </div>
             <div class="modal-body">
-                <img src="https://chatfood.imgix.net/static/healthy-bites/assets/healthy-bites.jpeg" style="width:200px; height:200px">
+                <img src="https://chatfood.imgix.net/static/healthy-bites/assets/healthy-bites.jpeg" style="width:100%; height:200px">
                 <br>
-                <h1>
+                <h1 class="shopName">
                     <%=resultKey.shopName %>
                 </h1>
-                <p>
+                <p class="cityName">
+                    <i class="fas fa-map-marker-alt"></i>
                     <%=resultKey.city %>
                         <%=resultKey.district %>
                 </p>
-                <p>
-                    Delivery Time :
-                    <%=resultKey.deliveryTime %> Min
+                <p class="deliveryTime">
+                    <i class="far fa-clock"></i> Delivery Time :
+                    <%=resultKey.deliveryTime %> <i class="fas fa-shopping-bag"></i> Min
                         <%=resultKey.minimumOrder %> Minimum Order
                 </p>
                 <hr>
@@ -366,11 +382,17 @@
 
                                         <img class="productImg" src="<%=item.productImages%>" style="width: 150px; height: 150px; border-radius: 10%; ">
 
-                                        <!-- <%item.featureName.forEach(itm => {%>
-                                            <li>
+                                        <form class="featureName">
+                                            <%item.featureName.forEach ((itm,idx) =>{%>
+
+                                                <input type="checkbox" id="featureName" name="featureName">
+
                                                 <%=itm%>
-                                            </li>
-                                            <%})%> -->
+
+                                                    <label for="featureName"> </label>
+                                                    <%})%>
+
+                                        </form>
 
                                 </div>
                                 <hr>
@@ -381,26 +403,39 @@
 
             </div>
             <div class="modal-footer">
-                <h3>Modal Footer</h3>
+                <div class="footerCart">
+                    <button class="cartBtn"> Add To Cart </button>
+                    <i id="chartIcon" style="font-size:24px" class="fa">&#xf07a;</i>
+                </div>
+
             </div>
         </div>
     </div>
 
 
     <div id="productPage">
-        <img id="productimg" src="" style="width: 150px; height: 150px; border-radius: 10%; ">
+        <img id="productimg" src="" style="width: 100%; height: 50%; border-radius: 5%; ">
+        <br>
         <h1 id="productName"></h1>
-
         <p id="productDesc"></p>
         <hr>
 
-        <%productKey.map(item => {%>
-            <p>
-                <%=item.featureName%>
-            </p>
-            <%})%>
+        <form>
+            <input type="checkbox" id="featureName" name="featureName" value="featureName">
+            <label for="featureName"> </label>
+
+        </form>
+
+
+
+
+
+
+
 
     </div>
+
+
 
 
 
@@ -414,11 +449,11 @@
 
             <div class="wrapper">
                 <button id="myBtn">
-                    Order Now! 
+                    Order Now!
                     <span></span>
                     <span></span>
                     <span></span>
-                  <span></span>
+                    <span></span>
                 </button>
             </div>
 
@@ -455,7 +490,7 @@
         <div>
             <div class="sign">
                 <span class="fast-flicker">S</span>tep<span class="flicker">
-              <br>By</span>Step
+                    <br>By</span>Step
             </div>
 
         </div>
@@ -555,19 +590,26 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="main-heading left_text">
-                                <h2>It Next Theme</h2>
+                                <h2>GET SOSIAL </h2>
                             </div>
                             <p>Tincidunt elit magnis nulla facilisis. Dolor sagittis maecenas. Sapien nunc amet ultrices, dolores sit ipsum velit purus aliquet, massa fringilla leo orci.</p>
                             <ul class="social_icons">
-                                <li class="social-icon fb"><a href="#"><i class="fa fa-facebook"
-                                            aria-hidden="true"></i></a></li>
-                                <li class="social-icon tw"><a href="#"><i class="fa fa-twitter"
-                                            aria-hidden="true"></i></a></li>
-                                <li class="social-icon gp"><a href="#"><i class="fa fa-google-plus"
-                                            aria-hidden="true"></i></a></li>
+                                <li>
+                                    <a class="fab fa-facebook" href="https://facebook.com/linkersIoT" title="Facebook" target="_blank"></a>
+                                </li>
+
+                                <li>
+                                    <a class="fab fa-twitter" href="https://twitter.com/linkersIoT" title="Twitter" target="_blank"></a>
+                                </li>
+                                <li>
+                                    <a class="fab fa-linkedin" href="ttps://www.linkedin.com/company/linkersiot" title="LinkedIn" target="_blank"></a>
+                                </li>
+                                <li>
+                                    <a class="fab fa-instagram" href="https://www.instagram.com/linkersIoT/" title="Instagram" target="_blank"></a>
+                                </li>
                             </ul>
                         </div>
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="main-heading left_text">
                                 <h2>Additional links</h2>
                             </div>
@@ -580,8 +622,8 @@
                                 <li><a href="it_news.html"><i class="fa fa-angle-right"></i> News</a></li>
                                 <li><a href="it_contact.html"><i class="fa fa-angle-right"></i> Contact us</a></li>
                             </ul>
-                        </div>
-                        <div class="col-md-6">
+                        </div> -->
+                        <!-- <div class="col-md-6">
                             <div class="main-heading left_text">
                                 <h2>Services</h2>
                             </div>
@@ -597,13 +639,15 @@
                                 <li><a href="it_techn_support.html"><i class="fa fa-angle-right"></i> Technical
                                         support</a></li>
                             </ul>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
                             <div class="main-heading left_text">
                                 <h2>Contact us</h2>
                             </div>
-                            <p>123 Second Street Fifth Avenue,<br> Manhattan, New York<br>
-                                <span style="font-size:18px;"><a href="tel:+9876543210">+987 654 3210</a></span></p>
+                            <p>Linkers Team<br>
+                                <span style="font-size:18px;"><a href="tel:+971585640500">
+                                        +971585640500
+                                        +966564405900</a></span></p>
                             <div class="footer_mail-section">
                                 <form>
                                     <fieldset>
@@ -619,7 +663,9 @@
                     </div>
                 </div>
                 <div class="cprt">
-                    <p>ItNext © Copyrights 2019 Design by html.design</p>
+                    <p> © 2020 Linkers Technology | Orderlink
+
+                    </p>
                 </div>
             </div>
         </div>
@@ -643,133 +689,35 @@
     <script src="/it-next/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
     <script src="/it-next/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script src="/it-next/revolution/js/extensions/revolution.extension.video.min.js"></script>
-    <script>
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 11,
-                center: {
-                    lat: 40.645037,
-                    lng: -73.880224
-                },
-                styles: [{
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#fefefe'
-                    }]
-                }, {
-                    elementType: 'labels.icon',
-                    stylers: [{
-                        visibility: 'off'
-                    }]
-                }, {
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#616161'
-                    }]
-                }, {
-                    elementType: 'labels.text.stroke',
-                    stylers: [{
-                        color: '#f5f5f5'
-                    }]
-                }, {
-                    featureType: 'administrative.land_parcel',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#bdbdbd'
-                    }]
-                }, {
-                    featureType: 'poi',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#eeeeee'
-                    }]
-                }, {
-                    featureType: 'poi',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#757575'
-                    }]
-                }, {
-                    featureType: 'poi.park',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#e5e5e5'
-                    }]
-                }, {
-                    featureType: 'poi.park',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#9e9e9e'
-                    }]
-                }, {
-                    featureType: 'road',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#eee'
-                    }]
-                }, {
-                    featureType: 'road.arterial',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#3d3523'
-                    }]
-                }, {
-                    featureType: 'road.highway',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#eee'
-                    }]
-                }, {
-                    featureType: 'road.highway',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#616161'
-                    }]
-                }, {
-                    featureType: 'road.local',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#9e9e9e'
-                    }]
-                }, {
-                    featureType: 'transit.line',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#e5e5e5'
-                    }]
-                }, {
-                    featureType: 'transit.station',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#000'
-                    }]
-                }, {
-                    featureType: 'water',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#c8d7d4'
-                    }]
-                }, {
-                    featureType: 'water',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#b1a481'
-                    }]
-                }]
-            });
 
-            var image = 'it-next/images/it_service/location_icon_map_cont.png';
-            var beachMarker = new google.maps.Marker({
-                position: {
-                    lat: 40.645037,
-                    lng: -73.880224
-                },
-                map: map,
-                icon: image
+
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var uluru = {
+                lat: -25.344,
+                lng: 131.036
+            };
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {
+                    zoom: 4,
+                    center: uluru
+                });
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
             });
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
+
+
+
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_hwsMkawSLtSX-MG0Kxd5UxUj6PsFt7A&callback=initMap">
+    </script>
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <script src="/it-next/js/app.js"></script>
