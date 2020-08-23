@@ -110,33 +110,119 @@ var leftArrow = document.getElementById("leftArrow");
 
 
 $("#leftArrow").click(function() {
-    console.log('arrow')
-    modal.style.display = "block";
-    // var x = $(".modal-body").html();
-    // $(".modal-body").html(goBack);
+    $(".modal-body").html(goBack);
     leftArrow.style.display = "none";
-
+    model2();
 })
 
+function model2() {
 
-$(".theProduct").click(function(event) {
-    console.log("event", event.target.id);
-    var productId = event.target.id;
+    $(".theProduct").click(function(event) {
+        console.log("event", event.target.id);
+        var productId = event.target.id;
 
-    var productImgs = $(`#${productId} .productImg`).attr('src');
-    var productNames = $(`#${productId} .productName`).html();
-    var productDescs = $(`#${productId} .productDesc`).html();
-    var featureNames = $(`#${productId} .featureName2`).html();
-
-
-    $("#productName").html(productNames);
-    $("#productDesc").html(productDescs);
-    $(".featureName").html(featureNames);
-
-    $("#productimg").attr('src', productImgs);
+        var productImgs = $(`#${productId} .productImg`).attr('src');
+        var productNames = $(`#${productId} .productName`).html();
+        var productDescs = $(`#${productId} .productDesc`).html();
+        var featureNames = $(`#${productId} .featureName2`).html();
 
 
-    leftArrow.style.display = "block";
-    var x = $("#productPage").html();
-    $(".modal-body").html(x);
-});
+        $("#productName").html(productNames);
+        $("#productDesc").html(productDescs);
+        $(".featureName").html(featureNames);
+
+        $("#productimg").attr('src', productImgs);
+
+
+        leftArrow.style.display = "block";
+        var x = $("#productPage").html();
+        $(".modal-body").html(x);
+    });
+
+}
+
+model2();
+
+
+
+
+//// add to cart 
+
+
+var count = 0;
+var spano = document.querySelector('#spano');
+var products = [];
+
+function Products(name, price, quantity, extra) {
+    this.name = name;
+    this.price = price;
+    this.quantity = quantity;
+    this.extra = extra;
+
+    this.total = this.quantity * this.price;
+    products.push(this);
+}
+
+for (var i = 0; i < products.length; i++) {
+    new Products(products[i]);
+}
+
+
+var addToCart = document.querySelectorAll('.productC');
+for (var i = 0; i < addToCart.length; i++) {
+    addToCart[i].addEventListener('click', handelAddToCart);
+}
+console.log('sssssss', addToCart);
+// var cartBtn = document.querySelector('.cartBtn');
+// cartBtn.addEventListener('click', handelAddToCart);
+
+getProduct();
+
+
+function handelAddToCart(event) {
+    getProduct();
+    event.preventDefault();
+    if (event.target.textContent == 'Add To Cart') {
+        // Reach the name of the product
+        console.log('click')
+        console.log(event);
+
+        var productName = event.path[2].children[0].children[1].textContent;
+        // console.log(productName);
+        // console.log(event.path[2].children[0].children[0].attributes[1].nodeValue);
+        // Reach the price of the product
+        // var productPrice = event.path[2].children[0].children[0].attributes[1].nodeValue;
+        // console.log(productPrice);
+        //Reach the quantity
+        var productQuantity = event.path[1].children[1].value;
+        if (productQuantity == 0) {
+            productQuantity = 1;
+        }
+        //creat p
+        // console.log(productQuantity);
+        new Products(productName, productPath, productPrice, productQuantity);
+        count += 1;
+        spano.textContent = `${count}`;
+        // console.log(products);
+        setProduct();
+    }
+}
+//send the selected Product to the local srorage
+function setProduct() {
+    var item = JSON.stringify(products);
+    localStorage.setItem('item', item);
+    var item2 = JSON.stringify(count);
+    localStorage.setItem('count', item2);
+}
+// get the item that stored in the local storage 
+function getProduct() {
+    var getproduct = localStorage.getItem('item');
+    if (getproduct) {
+        products = JSON.parse(getproduct);
+    }
+    var getCount = localStorage.getItem('count');
+    if (getCount) {
+        count = JSON.parse(getCount);
+        spano.textContent = `${count}`;
+    }
+}

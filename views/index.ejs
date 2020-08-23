@@ -367,7 +367,7 @@
                     <li>
                         <%=key%>
                             <%productKey.map(item => {%>
-                                <div id="<%=item.productName.replace(/\s/g, '')%>" class="theProduct">
+                                <div id="<%=item.productName.replace(/\s/g, '')%>" class="theProduct productC">
                                     <% if(item.category === key){ %>
                                         <p class="productName">
                                             <%=item.productName%>
@@ -375,7 +375,7 @@
                                         <p class="productDesc">
                                             <%=item.description%>
                                         </p>
-                                        <p>
+                                        <p class="productC">
                                             Price :
                                             <%=item.price%>
                                         </p>
@@ -388,11 +388,10 @@
                                                 <input type="checkbox" id="featureName" name="featureName">
 
                                                 <%=itm%>
-                                                    <span>
+                                                    <span class="productC">
                                                         <%=item.extraPrice[idx]%> 
 
                                                     </span>
-                                                    <label for="featureName"> </label>
                                                     <br>
 
                                                     <%})%>
@@ -409,7 +408,7 @@
             </div>
             <div class="modal-footer">
                 <div class="footerCart">
-                    <button class="cartBtn"> Add To Cart </button>
+                    <button class="cartBtn productC">Add To Cart</button><span id="spano"></span>
                     <i id="chartIcon" style="font-size:24px" class="fa">&#xf07a;</i>
                 </div>
 
@@ -426,15 +425,10 @@
         <hr>
 
         <form>
-            <!-- <input type="checkbox" name="featureName" value="featureName"> -->
-            <label class="featureName" for="featureName"> </label>
+            <label class="featureName productC" for="featureName"> </label>
             <br>
 
         </form>
-
-
-
-
 
     </div>
 
