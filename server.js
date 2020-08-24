@@ -39,6 +39,7 @@ app.get('/', (req, res) => {
 })
 
 function Restorant(data) {
+    this.coverImage = `http://orderlink.linkers.io:8096${data[0].availableBranches[0].storeDetails.coverImage}`;
     this.shopName = data[0].availableBranches[0].storeDetails.shopName;
     this.city = data[0].availableBranches[0].storeDetails.city;
     this.district = data[0].availableBranches[0].storeDetails.district;
@@ -59,6 +60,7 @@ function Category(data) {
     this.productImages = `http://orderlink.linkers.io:8096${data.productImages}`;
     this.featureName = data.featuresList[0] ? data.featuresList[0].items.map(item => item.featureName) : [''];
     this.extraPrice = data.featuresList[0] ? data.featuresList[0].items.map(item => `+ ${item.extraPrice} $`) : [''];
+    this.groupName = data.featuresList[0] ? data.featuresList[0].groupName : ['no addition'];
 }
 
 

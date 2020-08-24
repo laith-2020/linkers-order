@@ -63,8 +63,7 @@
                             <div class="topbar-left">
                                 <ul class="list-inline">
                                     <li> <span class="topbar-label"><i class="fa  fa-home"></i></span> <span class="topbar-hightlight">linkers</span> </li>
-                                    <li> <span class="topbar-label"><i class="fa fa-envelope"></i></span> <span class="topbar-hightlight"><a
-                                                href="Info@linkers.io">Info@linkers.io</a></span>
+                                    <li> <span class="topbar-label"><i class="fa fa-envelope"></i></span> <span class="topbar-hightlight"><a href="#">Info@linkers.io</a></span>
                                     </li>
                                 </ul>
                             </div>
@@ -82,7 +81,7 @@
                                         <a class="fab fa-twitter" href="https://twitter.com/linkersIoT" title="Twitter" target="_blank"></a>
                                     </li>
                                     <li>
-                                        <a class="fab fa-linkedin" href="ttps://www.linkedin.com/company/linkersiot" title="LinkedIn" target="_blank"></a>
+                                        <a class="fab fa-linkedin" href="https://www.linkedin.com/company/linkersiot" title="LinkedIn" target="_blank"></a>
                                     </li>
                                     <li>
                                         <a class="fab fa-instagram" href="https://www.instagram.com/linkersIoT/" title="Instagram" target="_blank"></a>
@@ -91,7 +90,7 @@
                             </div>
                         </div>
                         <div class="float-right">
-                            <div class="make_appo"> <a class="btn white_btn" href="make_appointment.html">Book a
+                            <div class="make_appo"> <a class="btn white_btn" href="#">Book a
                                     Demo</a> </div>
                         </div>
                     </div>
@@ -114,11 +113,11 @@
                         <div class="menu_side">
                             <div id="navbar_menu">
                                 <ul class="first-ul">
-                                    <li> <a class="active" href="it_home.html">Home</a> </li>
+                                    <li> <a class="active" href="#Home">Home</a> </li>
 
-                                    <li> <a href="it_contact.html">Contact</a></li>
-                                    <li> <a href="it_contact.html">Login</a></li>
-                                    <li> <a href="it_contact.html">Sign up</a></li>
+                                    <li> <a id="con" href="#contact">Contact</a></li>
+                                    <li> <a href="#">Login</a></li>
+                                    <li> <a href="#">Sign up</a></li>
                                 </ul>
                             </div>
 
@@ -345,7 +344,8 @@
 
             </div>
             <div class="modal-body">
-                <img src="https://chatfood.imgix.net/static/healthy-bites/assets/healthy-bites.jpeg" style="width:100%; height:200px">
+
+                <img src="<%=resultKey.coverImage %>" style="width:100%; height:200px">
                 <br>
                 <h1 class="shopName">
                     <%=resultKey.shopName %>
@@ -357,41 +357,62 @@
                 </p>
                 <p class="deliveryTime">
                     <i class="far fa-clock"></i> Delivery Time :
-                    <%=resultKey.deliveryTime %> <i class="fas fa-shopping-bag"></i> Min
-                        <%=resultKey.minimumOrder %> Minimum Order
+                    <%=resultKey.deliveryTime %> Min <i class="fas fa-shopping-bag"></i>
+                        <%=resultKey.minimumOrder %> RS , Minimum Order
                 </p>
+
+                <nav>
+                    <%categoryKey.map((key,idx)=> {%>
+
+                        <a href="#<%=key%>" class="ank">
+                            <%=key%>
+
+                        </a>
+
+                        <%})%>
+
+                </nav>
+
                 <hr>
 
 
-                <%categoryKey.map(key=> {%>
-                    <li>
+                <%categoryKey.map((key,idx)=> {%>
+                    <li id="<%=key%>" class="categName">
                         <%=key%>
-                            <%productKey.map(item => {%>
+                            <%productKey.map((item,idx) => {%>
                                 <div id="<%=item.productName.replace(/\s/g, '')%>" class="theProduct productC">
                                     <% if(item.category === key){ %>
-                                        <p class="productName">
+
+
+                                        <img id="<%=item.productName.replace(/\s/g, '')%>" class="productImg" src="<%=item.productImages%>" style="width: 100px; height: 100px; border-radius: 10%; ">
+
+
+                                        <p id="<%=item.productName.replace(/\s/g, '')%>" class="productName">
                                             <%=item.productName%>
                                         </p>
-                                        <p class="productDesc">
+                                        <p id="<%=item.productName.replace(/\s/g, '')%>" class="productDesc">
                                             <%=item.description%>
                                         </p>
-                                        <p class="productC">
+                                        <p id="<%=item.productName.replace(/\s/g, '')%>" class="productC productPrice" style="color: black; padding-left:27px;">
                                             Price :
                                             <%=item.price%>
                                         </p>
 
-                                        <img class="productImg" src="<%=item.productImages%>" style="width: 150px; height: 150px; border-radius: 10%; ">
+                                        <p class="groupName">
+                                            <%=item.groupName%>
+                                        </p>
+
 
                                         <form class="featureName2">
                                             <%item.featureName.forEach ((itm,idx) =>{%>
 
                                                 <input type="checkbox" id="featureName" name="featureName">
-
                                                 <%=itm%>
-                                                    <span class="productC">
-                                                        <%=item.extraPrice[idx]%> 
 
-                                                    </span>
+                                                    <div id="thePrice">
+                                                        <span class="productC"> <%=item.extraPrice[idx]%> </span>
+                                                    </div>
+                                                    <br>
                                                     <br>
 
                                                     <%})%>
@@ -407,12 +428,25 @@
 
             </div>
             <div class="modal-footer">
-                <div class="footerCart">
-                    <button class="cartBtn productC">Add To Cart</button><span id="spano"></span>
-                    <i id="chartIcon" style="font-size:24px" class="fa">&#xf07a;</i>
-                </div>
 
+                <section id="addToCartSection">
+
+                    <button id="addToCartBtn" class="cartBtn productC">
+                        <span>Add To Cart</span>
+                        <svg width="13px" height="10px" viewBox="0 0 13 10">
+                            <path d="M1,5 L11,5"></path>
+                            <polyline points="8 1 12 5 8 9"></polyline>
+                        </svg>
+                        <i id="chartIcon" style="font-size:24px" class="fa">&#xf07a;</i><span id="spano"></span>
+
+                    </button>
+
+                </section>
+                <!-- <section>
+                        <button class="viewCart">View Cart</button><span id="spano"></span>
+                    </section> -->
             </div>
+
         </div>
     </div>
 
@@ -423,10 +457,10 @@
         <h1 id="productName"></h1>
         <p id="productDesc"></p>
         <hr>
+        <p id="groupName"></p>
 
         <form>
-            <label class="featureName productC" for="featureName"> </label>
-            <br>
+            <label id="features" class="featureName productC" for="featureName"> </label>
 
         </form>
 
@@ -637,7 +671,7 @@
                                         support</a></li>
                             </ul>
                         </div> -->
-                        <div class="col-md-6">
+                        <div id="contact" class="col-md-6">
                             <div class="main-heading left_text">
                                 <h2>Contact us</h2>
                             </div>
