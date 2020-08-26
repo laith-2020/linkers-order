@@ -180,7 +180,7 @@ var count = 0;
 function Item(productName, price, quantity, extra, extraPrice) {
     this.productName = productName;
     this.price = price;
-    this.quantity = quantity;
+    this.quantity = 0;
     this.extra = extra;
     this.extraPrice = extraPrice;
 
@@ -205,8 +205,8 @@ var spano1 = document.querySelector('.spano1');
 function handleAddToCart(event) {
     console.log(event);
 
-    let productNames = productNameHeader.textContent.trim();
-    let productPrices = productPriceParagraph.textContent;
+    var productNames = productNameHeader.textContent.trim();
+    var productPrices = productPriceParagraph.textContent;
 
 
     var priceArray = [];
@@ -250,9 +250,13 @@ function handleViewCart() {
     $("#viewCart").html(`<p class="productPrice3"></p>`);
     $("#viewCart").html(`<p class="extra"></p>`);
     $("#viewCart").html(`<p class="extraPrice"></p>`);
-    $("#viewCart").html(`<span id="decr">-</span>`);
-    $("#viewCart").html(`<span id="counterQ"></span>`);
-    $("#viewCart").html(`<span id="inc">+</span>`);
+
+    $("#viewCart").html(`<form class="quantityForm">
+    <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+    <input type="number" id="number" value="0" />
+    <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+</form>`);
+
 
 
     for (var i = 0; i < products.length; i++) {
@@ -273,18 +277,10 @@ function handleViewCart() {
         paragraph3.textContent = products[i].extraPrice;
         $("#viewCart").append(paragraph3);
 
-        var counterQ = document.createElement('p');
-        counterQ.textContent = products[i].quantity;
-        $("#viewCart").append(counterQ);
+        // var counterQ = document.createElement('span');
+        // counterQ.textContent = products[i].quantity;
+        // $("#viewCart").append(counterQ);
 
-        $("#inc").click(function() {
-            products[i].quantity++;
-
-        })
-        $("#decr").click(function() {
-            products[i].quantity--;
-
-        })
     }
 
     var x = $("#viewCart").html();
@@ -295,24 +291,25 @@ function handleViewCart() {
 }
 
 
-// getProduct();
 
-// send the selected Product to the local srorage
-// function setProduct() {
-//     var item = JSON.stringify(products);
-//     localStorage.setItem('item', item);
-//     var item2 = JSON.stringify(count);
-//     localStorage.setItem('count', item2);
-// }
 
-// function getProduct() {
-//     var getproduct = localStorage.getItem('item');
-//     if (getproduct) {
-//         products = JSON.parse(getproduct);
-//     }
-//     var getCount = localStorage.getItem('count');
-//     if (getCount) {
-//         count = JSON.parse(getCount);
-//         spano.textContent = `${count}`;
-//     }
-// }
+function decreaseValue() {
+    var value = parseInt(document.getElementById('number').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value < 1 ? value = 1 : '';
+    value--;
+    document.getElementById('number').value = value;
+}
+
+function increaseValue() {
+
+    var productPrices = productPriceParagraph.textContent;
+    new Item(productPrices);
+    productPrices = productPrices * 2;
+    console.log('pppppppppppppppppp', productPrices);
+
+    var value = parseInt(document.getElementById('number').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('number').value = value;
+}
