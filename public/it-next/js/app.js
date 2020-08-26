@@ -139,12 +139,16 @@ function model2() {
 
         var productNames = $(`#${productId} .productName`).html();
         var productDescs = $(`#${productId} .productDesc`).html();
+        var productPrices = $(`#${productId} .productPrice`).html();
+
         var groupNames = $(`#${productId} .groupName`).html();
         var featureNames = $(`#${productId} .featureName2`).html();
 
 
-        $("#productName").html(productNames);
+        $("#productNameHeader").html(productNames);
         $("#productDesc").html(productDescs);
+        $("#productPriceParagraph").html(`Price: ${productPrices}`);
+
         $("#groupName").html(groupNames);
         $(".featureName").html(featureNames);
         $("#productimg").attr('src', productImgs);
@@ -186,37 +190,77 @@ function Item(productName, price, quantity, extra) {
 let viewBascket = document.querySelector('#viewBascket');
 let addToCartBtn = document.querySelector('#addToCartBtn');
 let viewCartBtn = document.querySelector('#viewCartBtn');
-let productName = document.querySelector('#productName');
 
-$("#viewBascket").hide();
+$("#viewCart").hide();
 
 
 addToCartBtn.addEventListener('click', handleAddToCart);
-viewCartBtn.addEventListener('click', handleViewCart);
 
+let productNameHeader = document.querySelector('#productNameHeader');
+let productPriceParagraph = document.querySelector('#productPriceParagraph');
+let featureName = document.querySelector('.featureName');
+
+
+var spano = document.querySelector('.spano');
+var spano1 = document.querySelector('.spano1');
+
+
+function handleAddToCart(event) {
+    console.log(event);
+
+    let productNames = productNameHeader.textContent.trim();
+    let productPrices = productPriceParagraph.textContent;
+    let featureNames = featureName.textContent;
+
+
+    console.log(productNames);
+    console.log(productPrices);
+    console.log(featureNames);
+
+    new Item(productNames, productPrices, featureNames);
+
+    count += 1;
+    spano.textContent = `${count}`;
+    spano1.textContent = `${count}`;
+
+
+    $(".modal-body").html(goBack);
+    addToCartBtn.style.display = "none";
+    viewBascket.style.display = "block";
+    leftArrow.style.display = "none";
+
+    model2();
+
+}
+
+
+
+viewCartBtn.addEventListener('click', handleViewCart);
 
 function handleViewCart() {
     console.log('viewwwwww');
-    $("#viewCart").html(`<h1 class="productName1"></h1>`);
+    $("#viewCart").html(`<h1 class="productName3"></h1>`);
+    $("#viewCart").html(`<p class="productPrice3"></p>`);
+    $("#viewCart").html(`<form><label class="featureName3"></label></form>`);
+
+
 
     for (var i = 0; i < products.length; i++) {
 
-        // $("#viewCart").html(`<h1 class="productName1">${products[i].productName}</h1>`);
         var head1 = document.createElement('h1');
         head1.textContent = products[i].productName;
         $("#viewCart").append(head1);
 
+        var paragraph1 = document.createElement('p');
+        paragraph1.textContent = products[i].price;
+        $("#viewCart").append(paragraph1);
 
+        var paragraph2 = document.createElement('p');
+        paragraph2.textContent = products[i].extra;
+        $("#viewCart").append(paragraph2);
     }
 
 
-    // console.log("event", event.target.id);
-    // var productId = event.target.id;
-
-
-    // var productNames = $(`#${productId} .productName`).html();
-
-    // $("#productName").html(productNames);
 
     var x = $("#viewCart").html();
     $(".modal-body").html(x);
@@ -225,66 +269,25 @@ function handleViewCart() {
 
 }
 
-// let productName1 = document.querySelector(".productName");
-// let productPrice = document.querySelector(".price");
 
-
-function handleAddToCart(event) {
-    getProduct();
-    console.log(event);
-
-    let productName = event.path[4].children[1].children[2].textContent.trim();
-    console.log(productName);
-
-
-    // let productPrice = event.path[4].children[1].children[2].textContent.trim();
-    // console.log(productPrice);
-
-
-    new Item(productName);
-
-
-    count += 1;
-    spano.textContent = `${count}`;
-    // console.log(products);
-    setProduct();
-
-    $(".modal-body").html(goBack);
-    addToCartBtn.style.display = "none";
-    viewBascket.style.display = "block";
-
-    // console.log("event", event.target.id);
-    // var productId = event.target.id;
-    // var productNames = $(`#${productId} .productName`).html();
-    // $("#productName").html(productNames);
-
-    // var x = $("#viewCart").html();
-    // $(".modal-body").html(x);
-    model2();
-
-}
-
-
-
-
-getProduct();
+// getProduct();
 
 // send the selected Product to the local srorage
-function setProduct() {
-    var item = JSON.stringify(products);
-    localStorage.setItem('item', item);
-    var item2 = JSON.stringify(count);
-    localStorage.setItem('count', item2);
-}
+// function setProduct() {
+//     var item = JSON.stringify(products);
+//     localStorage.setItem('item', item);
+//     var item2 = JSON.stringify(count);
+//     localStorage.setItem('count', item2);
+// }
 
-function getProduct() {
-    var getproduct = localStorage.getItem('item');
-    if (getproduct) {
-        products = JSON.parse(getproduct);
-    }
-    var getCount = localStorage.getItem('count');
-    if (getCount) {
-        count = JSON.parse(getCount);
-        spano.textContent = `${count}`;
-    }
-}
+// function getProduct() {
+//     var getproduct = localStorage.getItem('item');
+//     if (getproduct) {
+//         products = JSON.parse(getproduct);
+//     }
+//     var getCount = localStorage.getItem('count');
+//     if (getCount) {
+//         count = JSON.parse(getCount);
+//         spano.textContent = `${count}`;
+//     }
+// }

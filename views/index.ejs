@@ -116,8 +116,8 @@
                                     <li> <a class="active" href="#Home">Home</a> </li>
 
                                     <li> <a id="con" href="#contact">Contact</a></li>
-                                    <li> <a href="#">Login</a></li>
-                                    <li> <a href="#">Sign up</a></li>
+                                    <li> <a href="#">Client Login</a></li>
+                                    <li> <a href="#">Regester</a></li>
                                 </ul>
                             </div>
 
@@ -393,9 +393,9 @@
                                         <p id="<%=item.productName.replace(/\s/g, '')%>" class="productDesc">
                                             <%=item.description%>
                                         </p>
-                                        <p id="<%=item.productName.replace(/\s/g, '')%>" class="productC productPrice" style="color: black; padding-left:27px;">
+                                        <p id="<%=item.productName.replace(/\s/g, '')%>" class="productC " style="color: black; padding-left:27px;">
                                             Price :
-                                            <%=item.price%>
+                                            <span class="productPrice"><%=item.price%></span>
                                         </p>
 
                                         <p class="groupName">
@@ -404,18 +404,20 @@
 
 
                                         <form class="featureName2">
-                                            <%item.featureName.forEach ((itm,idx) =>{%>
+                                            <%if(item.featureName[0] !== ''){%>
+                                                <%item.featureName.forEach ((itm,idx) =>{%>
 
-                                                <input type="checkbox" id="featureName" name="featureName">
-                                                <%=itm%>
+                                                    <input type="checkbox" id="featureName" name="featureName">
+                                                    <%=itm%>
 
-                                                    <div id="thePrice">
-                                                        <span class="productC"> <%=item.extraPrice[idx]%> </span>
-                                                    </div>
-                                                    <br>
-                                                    <br>
+                                                        <div id="thePrice">
+                                                            <span class="productC"> <%=item.extraPrice[idx]%> </span>
+                                                        </div>
+                                                        <br>
+                                                        <br>
 
-                                                    <%})%>
+                                                        <%})%>
+                                                            <%}%>
 
                                         </form>
 
@@ -437,7 +439,7 @@
                             <path d="M1,5 L11,5"></path>
                             <polyline points="8 1 12 5 8 9"></polyline>
                         </svg>
-                        <i id="chartIcon" style="font-size:24px" class="fa">&#xf07a;</i><span id="spano"></span>
+                        <i id="chartIcon" style="font-size:24px" class="fa">&#xf07a;</i><span class="spano"></span>
 
                     </button>
 
@@ -449,7 +451,7 @@
                             <path d="M1,5 L11,5"></path>
                             <polyline points="8 1 12 5 8 9"></polyline>
                         </svg>
-                        <i id="chartIcon" style="font-size:24px" class="fa">&#xf07a;</i><span id="spano"></span>
+                        <i id="chartIcon" style="font-size:24px" class="fa">&#xf07a;</i><span class="spano1"></span>
 
                     </button>
 
@@ -463,13 +465,15 @@
     <div id="productPage">
         <img id="productimg" src="" style="width: 100%; height: 50%; border-radius: 5%; ">
         <br>
-        <h1 id="productName"></h1>
+        <h1 id="productNameHeader"></h1>
         <p id="productDesc"></p>
+        <p id="productPriceParagraph"></p>
+
         <hr>
         <p id="groupName"></p>
 
         <form>
-            <label id="features" class="featureName productC" for="featureName"> </label>
+            <label id="features" class="featureName productC"> </label>
 
         </form>
 
@@ -477,8 +481,13 @@
 
 
     <div id="viewCart">
-        <h1 class="productName1"></h1>
+        <h1 class="productName3"></h1>
+        <p class="productPrice3"></p>
 
+        <form>
+            <label class="featureName3"></label>
+
+        </form>
 
     </div>
 
@@ -509,13 +518,13 @@
     <div id="ProSlider">
 
         <div class="mySlides fade">
-            <img class="imgs" src="../it-next/images/it_service/card1.webp" style="width: 300px; height: 300px;">
+            <img class="imgs" src="../it-next/images/it_service/card1.webp" style="width: 300px; height: 250px;">
         </div>
         <div class="mySlides fade">
-            <img class="imgs" src="../it-next/images/it_service/card3.webp" style="width: 300px; height: 300px;">
+            <img class="imgs" src="../it-next/images/it_service/card3.webp" style="width: 300px; height: 250px;">
         </div>
         <div class="mySlides fade">
-            <img class="imgs" src="../it-next/images/it_service/slide1.png" style="width: 300px; height: 300px;">
+            <img class="imgs" src="../it-next/images/it_service/slide1.png" style="width: 300px; height: 250px;">
         </div>
         <br>
         <div>
