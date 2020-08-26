@@ -407,11 +407,12 @@
                                             <%if(item.featureName[0] !== ''){%>
                                                 <%item.featureName.forEach ((itm,idx) =>{%>
 
-                                                    <input type="checkbox" id="featureName" name="featureName">
+                                                    <input type="checkbox" id="featureName" class="<%=item.extraPrice[idx]%>" value="<%=itm%>" name="featureName">
+
                                                     <%=itm%>
 
                                                         <div id="thePrice">
-                                                            <span class="productC"> <%=item.extraPrice[idx]%> </span>
+                                                            <span class="productC">  <%=item.extraPrice[idx]%> </span>
                                                         </div>
                                                         <br>
                                                         <br>
@@ -484,10 +485,13 @@
         <h1 class="productName3"></h1>
         <p class="productPrice3"></p>
 
-        <form>
-            <label class="featureName3"></label>
+        <p class="extra"></p>
+        <p class="extraPrice"></p>
 
-        </form>
+        <span id="inc">+</span>
+        <span id="counterQ"></span>
+        <span id="decr">-</span>
+
 
     </div>
 

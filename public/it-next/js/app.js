@@ -177,15 +177,15 @@ model2();
 let products = [];
 var count = 0;
 
-function Item(productName, price, quantity, extra) {
+function Item(productName, price, quantity, extra, extraPrice) {
     this.productName = productName;
     this.price = price;
     this.quantity = quantity;
     this.extra = extra;
+    this.extraPrice = extraPrice;
+
     products.push(this);
 }
-
-
 
 let viewBascket = document.querySelector('#viewBascket');
 let addToCartBtn = document.querySelector('#addToCartBtn');
@@ -198,26 +198,33 @@ addToCartBtn.addEventListener('click', handleAddToCart);
 
 let productNameHeader = document.querySelector('#productNameHeader');
 let productPriceParagraph = document.querySelector('#productPriceParagraph');
-let featureName = document.querySelector('.featureName');
-
 
 var spano = document.querySelector('.spano');
 var spano1 = document.querySelector('.spano1');
-
 
 function handleAddToCart(event) {
     console.log(event);
 
     let productNames = productNameHeader.textContent.trim();
     let productPrices = productPriceParagraph.textContent;
-    let featureNames = featureName.textContent;
 
 
+    var priceArray = [];
+    var featureArray = []
+    var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+    for (var i = 0; i < checkboxes.length; i++) {
+        featureArray.push(checkboxes[i].value)
+        priceArray.push(checkboxes[i].className)
+
+    }
+
+    console.log(featureArray);
+    console.log(priceArray);
     console.log(productNames);
     console.log(productPrices);
-    console.log(featureNames);
 
-    new Item(productNames, productPrices, featureNames);
+
+    new Item(productNames, productPrices, 1, featureArray, priceArray);
 
     count += 1;
     spano.textContent = `${count}`;
@@ -241,8 +248,11 @@ function handleViewCart() {
     console.log('viewwwwww');
     $("#viewCart").html(`<h1 class="productName3"></h1>`);
     $("#viewCart").html(`<p class="productPrice3"></p>`);
-    $("#viewCart").html(`<form><label class="featureName3"></label></form>`);
-
+    $("#viewCart").html(`<p class="extra"></p>`);
+    $("#viewCart").html(`<p class="extraPrice"></p>`);
+    $("#viewCart").html(`<span id="decr">-</span>`);
+    $("#viewCart").html(`<span id="counterQ"></span>`);
+    $("#viewCart").html(`<span id="inc">+</span>`);
 
 
     for (var i = 0; i < products.length; i++) {
@@ -258,9 +268,24 @@ function handleViewCart() {
         var paragraph2 = document.createElement('p');
         paragraph2.textContent = products[i].extra;
         $("#viewCart").append(paragraph2);
+
+        var paragraph3 = document.createElement('p');
+        paragraph3.textContent = products[i].extraPrice;
+        $("#viewCart").append(paragraph3);
+
+        var counterQ = document.createElement('p');
+        counterQ.textContent = products[i].quantity;
+        $("#viewCart").append(counterQ);
+
+        $("#inc").click(function() {
+            products[i].quantity++;
+
+        })
+        $("#decr").click(function() {
+            products[i].quantity--;
+
+        })
     }
-
-
 
     var x = $("#viewCart").html();
     $(".modal-body").html(x);
