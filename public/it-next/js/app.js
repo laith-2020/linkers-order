@@ -242,20 +242,27 @@ function handleAddToCart(event) {
 
 
 
+$("#viewOrder").hide();
+
+let viewOrder = document.querySelector('#viewOrder');
+
 viewCartBtn.addEventListener('click', handleViewCart);
 
 function handleViewCart() {
     console.log('viewwwwww');
+
+
     $("#viewCart").html(`<h1 class="productName3"></h1>`);
     $("#viewCart").html(`<p class="productPrice3"></p>`);
     $("#viewCart").html(`<p class="extra"></p>`);
     $("#viewCart").html(`<p class="extraPrice"></p>`);
 
+
     $("#viewCart").html(`<form class="quantityForm">
     <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
     <input type="number" id="number" value="0" />
     <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
-</form>`);
+    </form>`);
 
 
 
@@ -281,12 +288,17 @@ function handleViewCart() {
         // counterQ.textContent = products[i].quantity;
         // $("#viewCart").append(counterQ);
 
+
+
     }
+
 
     var x = $("#viewCart").html();
     $(".modal-body").html(x);
     $("#viewBascket").hide();
     leftArrow.style.display = "block";
+    viewOrder.style.display = "block";
+
 
 }
 
