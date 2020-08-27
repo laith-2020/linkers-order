@@ -356,6 +356,9 @@
                     <%=resultKey.city %>
                         <%=resultKey.district %>
                 </p>
+                <p class="deliveryFees">
+                    <%=resultKey.deliveryFees%>
+                </p>
                 <p class="deliveryTime">
                     <i class="far fa-clock"></i> Delivery Time :
                     <%=resultKey.deliveryTime %> Min <i class="fas fa-shopping-bag"></i>
@@ -498,21 +501,28 @@
         <h1 style="width: 67%;" class="productName3"></h1>
         <p class="productPrice3"></p>
 
-        <p class="extra"></p>
+        <form>
+            <label id="features" class="featureName extra"> </label>
+        </form>
+
         <p class="extraPrice"></p>
 
 
         <form class="quantityForm">
-            <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+            <div class="value-button" id="decrease" value="Decrease Value">-</div>
             <input type="number" id="number" value="0" />
-            <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+            <div class="value-button" id="increase" value="Increase Value">+</div>
         </form>
-        <hr>
 
-
+        <p class="deliveryFees"></p>
 
 
     </div>
+
+
+
+
+
 
 
     <div class="orderOnline">

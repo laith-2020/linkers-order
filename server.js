@@ -49,6 +49,7 @@ function Restorant(data) {
     this.isEnabled = data[0].availableBranches[0].storeDetails.isEnabled;
     this.isClosed = data[0].availableBranches[0].storeDetails.isClosed;
     this.category = data.category;
+    this.deliveryFees = `deliveryFees ${data[0].availableBranches[0].storeDetails.deliveryFees} RS`;
 
 }
 
@@ -56,10 +57,10 @@ function Category(data) {
     this.category = data.category;
     this.productName = data.productName;
     this.description = data.description;
-    this.price = data.price;
+    this.price = ` Price :${data.price}`;
     this.productImages = `http://orderlink.linkers.io:8096${data.productImages}`;
     this.featureName = data.featuresList[0] ? data.featuresList[0].items.map(item => item.featureName) : [''];
-    this.extraPrice = data.featuresList[0] ? data.featuresList[0].items.map(item => `+ ${item.extraPrice} $`) : [''];
+    this.extraPrice = data.featuresList[0] ? data.featuresList[0].items.map(item => `+ ${item.extraPrice} RS`) : [''];
     this.groupName = data.featuresList[0] ? data.featuresList[0].groupName : ['no addition'];
 }
 

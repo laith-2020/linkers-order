@@ -120,14 +120,11 @@ $("#leftArrow").click(function() {
 
     model2();
     viewBascket.style.display = "block";
+    $(".deliveryFees").hide();
+    viewOrder.style.display = "none";
 
 })
 
-
-// var clickDiv = document.querySelectorAll('.theProduct');
-// for (var i = 0; i < clickDiv.length; i++) {
-//     clickDiv[i].addEventListener('click', model2);
-// }
 
 function model2() {
     $(".theProduct").click(function(event) {
@@ -147,7 +144,7 @@ function model2() {
 
         $("#productNameHeader").html(productNames);
         $("#productDesc").html(productDescs);
-        $("#productPriceParagraph").html(`Price: ${productPrices}`);
+        $("#productPriceParagraph").html(productPrices);
 
         $("#groupName").html(groupNames);
         $(".featureName").html(featureNames);
@@ -177,12 +174,14 @@ model2();
 let products = [];
 var count = 0;
 
-function Item(productName, price, quantity, extra, extraPrice) {
+function Item(productName, price, quantity, extra, extraPrice, deliveryFees) {
     this.productName = productName;
     this.price = price;
-    this.quantity = 0;
+    this.quantity = quantity;
     this.extra = extra;
     this.extraPrice = extraPrice;
+    this.deliveryFees = deliveryFees;
+
 
     products.push(this);
 }
@@ -198,6 +197,9 @@ addToCartBtn.addEventListener('click', handleAddToCart);
 
 let productNameHeader = document.querySelector('#productNameHeader');
 let productPriceParagraph = document.querySelector('#productPriceParagraph');
+let deliveryFees = document.querySelector('.deliveryFees');
+
+$(".deliveryFees").hide();
 
 var spano = document.querySelector('.spano');
 var spano1 = document.querySelector('.spano1');
@@ -207,8 +209,9 @@ function handleAddToCart(event) {
 
     var productNames = productNameHeader.textContent.trim();
     var productPrices = productPriceParagraph.textContent;
+    var deliveryFeesS = deliveryFees.textContent;
 
-
+    /// to  get the checked extra feature and it's price 
     var priceArray = [];
     var featureArray = []
     var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
@@ -222,9 +225,11 @@ function handleAddToCart(event) {
     console.log(priceArray);
     console.log(productNames);
     console.log(productPrices);
+    console.log(deliveryFeesS);
 
 
-    new Item(productNames, productPrices, 1, featureArray, priceArray);
+
+    new Item(productNames, productPrices, 1, featureArray, priceArray, deliveryFeesS);
 
     count += 1;
     spano.textContent = `${count}`;
@@ -235,6 +240,10 @@ function handleAddToCart(event) {
     addToCartBtn.style.display = "none";
     viewBascket.style.display = "block";
     leftArrow.style.display = "none";
+    deliveryFees.style.display = "none";
+    viewOrder.style.display = "none";
+    $(".deliveryFees").hide();
+
 
     model2();
 
@@ -249,21 +258,13 @@ let viewOrder = document.querySelector('#viewOrder');
 viewCartBtn.addEventListener('click', handleViewCart);
 
 function handleViewCart() {
-    console.log('viewwwwww');
-
-
-    $("#viewCart").html(`<h1 class="productName3"></h1>`);
-    $("#viewCart").html(`<p class="productPrice3"></p>`);
-    $("#viewCart").html(`<p class="extra"></p>`);
-    $("#viewCart").html(`<p class="extraPrice"></p>`);
 
 
     $("#viewCart").html(`<form class="quantityForm">
-    <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+    <div class="value-button" id="decrease" value="Decrease Value">-</div>
     <input type="number" id="number" value="0" />
-    <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+    <div class="value-button" id="increase" value="Increase Value">+</div>
     </form>`);
-
 
 
     for (var i = 0; i < products.length; i++) {
@@ -274,23 +275,30 @@ function handleViewCart() {
 
         var paragraph1 = document.createElement('p');
         paragraph1.textContent = products[i].price;
+        // paragraph1.setAttribute('class', 'productPriceView')
         $("#viewCart").append(paragraph1);
 
-        var paragraph2 = document.createElement('p');
-        paragraph2.textContent = products[i].extra;
-        $("#viewCart").append(paragraph2);
 
-        var paragraph3 = document.createElement('p');
-        paragraph3.textContent = products[i].extraPrice;
-        $("#viewCart").append(paragraph3);
+        products[i].extra.forEach(pro => {
+            var paragraph2 = document.createElement('li');
+            paragraph2.textContent = pro;
+            paragraph2.style.listStyle = 'none'
+            $("#viewCart").append(paragraph2);
+        })
 
-        // var counterQ = document.createElement('span');
-        // counterQ.textContent = products[i].quantity;
-        // $("#viewCart").append(counterQ);
+        products[i].extraPrice.forEach(pri => {
+            var paragraph3 = document.createElement('p');
+            paragraph3.textContent = pri;
+            $("#viewCart").append(paragraph3);
+        })
 
 
 
     }
+
+    var paragraph4 = document.createElement('p');
+    paragraph4.textContent = products[products.length - 1].deliveryFees;
+    $("#viewCart").append(paragraph4);
 
 
     var x = $("#viewCart").html();
@@ -303,6 +311,8 @@ function handleViewCart() {
 }
 
 
+let decrease = document.querySelector('#decrease');
+decrease.addEventListener('click', decreaseValue);
 
 
 function decreaseValue() {
@@ -315,9 +325,9 @@ function decreaseValue() {
 
 function increaseValue() {
 
-    var productPrices = productPriceParagraph.textContent;
-    new Item(productPrices);
-    productPrices = productPrices * 2;
+    var productPrices = productPriceParagraph.textContent.split(' ');
+    // new Item(productPrices);
+    productPrices *= 2;
     console.log('pppppppppppppppppp', productPrices);
 
     var value = parseInt(document.getElementById('number').value, 10);

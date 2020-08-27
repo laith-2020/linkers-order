@@ -4832,6 +4832,10 @@ h1 {
     box-shadow: 4px 4px 40px 0px rgba(0, 0, 0, 0.45);
 }
 
+.productPriceView {
+    background-color: blueviolet;
+}
+
 
 /* Image on the left side */
 
@@ -5622,10 +5626,7 @@ blockquote {
 }
 
 .ank:hover {
-    /* border: none; */
     background: #a6c627;
-    /* background: #fff; */
-    /* padding: 22px 22px; */
     color: #1b1b1b;
 }
 
@@ -5644,7 +5645,6 @@ blockquote {
     margin: 0px;
     width: 33px;
     height: 23px;
-    /* text-align: center; */
     vertical-align: middle;
     padding: 0px 0;
     background: #eee;
