@@ -188,7 +188,6 @@ function Item(productName, price, quantity, extra, extraPrice, deliveryFees) {
 
 let viewBascket = document.querySelector('#viewBascket');
 let addToCartBtn = document.querySelector('#addToCartBtn');
-let viewCartBtn = document.querySelector('#viewCartBtn');
 
 $("#viewCart").hide();
 
@@ -243,6 +242,8 @@ function handleAddToCart(event) {
     deliveryFees.style.display = "none";
     viewOrder.style.display = "none";
     $(".deliveryFees").hide();
+    $("#addToCartSection").hide();
+
 
 
     model2();
@@ -252,20 +253,13 @@ function handleAddToCart(event) {
 
 
 $("#viewOrder").hide();
-
 let viewOrder = document.querySelector('#viewOrder');
 
+
+let viewCartBtn = document.querySelector('#viewCartBtn');
 viewCartBtn.addEventListener('click', handleViewCart);
 
 function handleViewCart() {
-
-
-    $("#viewCart").html(`<form class="quantityForm">
-    <div class="value-button" id="decrease" value="Decrease Value">-</div>
-    <input type="number" id="number" value="0" />
-    <div class="value-button" id="increase" value="Increase Value">+</div>
-    </form>`);
-
 
     for (var i = 0; i < products.length; i++) {
 
@@ -293,7 +287,6 @@ function handleViewCart() {
         })
 
 
-
     }
 
     var paragraph4 = document.createElement('p');
@@ -316,6 +309,8 @@ decrease.addEventListener('click', decreaseValue);
 
 
 function decreaseValue() {
+    console.log('decreeees');
+
     var value = parseInt(document.getElementById('number').value, 10);
     value = isNaN(value) ? 0 : value;
     value < 1 ? value = 1 : '';
@@ -323,7 +318,13 @@ function decreaseValue() {
     document.getElementById('number').value = value;
 }
 
+
+let increase = document.querySelector('#increase');
+increase.addEventListener('click', increaseValue);
+
+
 function increaseValue() {
+    console.log('increeeeeeees');
 
     var productPrices = productPriceParagraph.textContent.split(' ');
     // new Item(productPrices);

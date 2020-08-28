@@ -364,18 +364,19 @@
                     <%=resultKey.deliveryTime %> Min <i class="fas fa-shopping-bag"></i>
                         <%=resultKey.minimumOrder %> RS , Minimum Order
                 </p>
+                <div class="stickeNav">
 
-                <nav>
-                    <%categoryKey.map((key,idx)=> {%>
+                    <nav class="navAnk">
+                        <%categoryKey.map((key,idx)=> {%>
 
-                        <a href="#<%=key%>" class="ank">
-                            <%=key%>
+                            <a href="#<%=key%>" id="ankerCateg" class="ank">
+                                <%=key%>
+                            </a>
 
-                        </a>
+                            <%})%>
 
-                        <%})%>
-
-                </nav>
+                    </nav>
+                </div>
 
                 <hr>
 
@@ -449,6 +450,7 @@
                     </button>
 
                 </section>
+
                 <section id="viewBascket">
                     <button id="viewCartBtn" class="cartBtn productC">
                         <span>View Cart</span>
@@ -478,7 +480,7 @@
 
 
     <div id="productPage">
-        <img id="productimg" src="" style="width: 100%; height: 50%; border-radius: 5%; ">
+        <img id="productimg" src="" style="width: 100%; height: 50%; ">
         <br>
         <h1 id="productNameHeader"></h1>
         <p id="productDesc"></p>
@@ -492,33 +494,25 @@
 
         </form>
 
+        <form class="quantityForm">
+            <div class="value-button" id="decrease1" value="Decrease Value">-</div>
+            <input type="number" id="number" value='1' />
+            <div class="value-button" id="increase1" value="Increase Value">+</div>
+        </form>
+
+        <div id="quantityDiv"></div>
+
     </div>
+
 
 
     <div id="viewCart">
-
-
-        <h1 style="width: 67%;" class="productName3"></h1>
-        <p class="productPrice3"></p>
-
-        <form>
-            <label id="features" class="featureName extra"> </label>
-        </form>
-
-        <p class="extraPrice"></p>
-
-
-        <form class="quantityForm">
-            <div class="value-button" id="decrease" value="Decrease Value">-</div>
-            <input type="number" id="number" value="0" />
-            <div class="value-button" id="increase" value="Increase Value">+</div>
-        </form>
-
-        <p class="deliveryFees"></p>
-
-
+        <!-- 
+            <h1 style="width: 67%;" class="productName3"></h1>
+            <p class="productPrice3"></p>
+            <p class="extraPrice"></p>
+            <p class="deliveryFees"></p> -->
     </div>
-
 
 
 
@@ -553,21 +547,23 @@
 
 
     <div id="ProSlider">
+        <div id="threeSlides">
 
-        <div class="mySlides fade">
-            <img class="imgs" src="../it-next/images/it_service/card1.webp" style="width: 300px; height: 250px;">
-        </div>
-        <div class="mySlides fade">
-            <img class="imgs" src="../it-next/images/it_service/card3.webp" style="width: 300px; height: 250px;">
-        </div>
-        <div class="mySlides fade">
-            <img class="imgs" src="../it-next/images/it_service/slide1.png" style="width: 300px; height: 250px;">
-        </div>
-        <br>
-        <div>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+            <div class="mySlides fade">
+                <img class="imgs" src="../it-next/images/it_service/card1.webp">
+            </div>
+            <div class="mySlides fade">
+                <img class="imgs" src="../it-next/images/it_service/card3.webp">
+            </div>
+            <div class="mySlides fade">
+                <img class="imgs" src="../it-next/images/it_service/slide1.png">
+            </div>
+            <br>
+            <div>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
         </div>
     </div>
 
