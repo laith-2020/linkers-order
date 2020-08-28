@@ -159,7 +159,10 @@ function model2() {
 
         $("#viewBascket").hide();
         addToCartBtn.style.display = "block";
-
+        let decrease = document.querySelector("#decrease1");
+        decrease.addEventListener("click", decreaseValue);
+        let increase = document.querySelector("#increase1");
+        increase.addEventListener("click", increaseValue);
 
     });
 
@@ -181,10 +184,9 @@ function Item(productName, price, quantity, extra, extraPrice, deliveryFees) {
     this.extra = extra;
     this.extraPrice = extraPrice;
     this.deliveryFees = deliveryFees;
-
-
     products.push(this);
 }
+
 
 let viewBascket = document.querySelector('#viewBascket');
 let addToCartBtn = document.querySelector('#addToCartBtn');
@@ -197,6 +199,7 @@ addToCartBtn.addEventListener('click', handleAddToCart);
 let productNameHeader = document.querySelector('#productNameHeader');
 let productPriceParagraph = document.querySelector('#productPriceParagraph');
 let deliveryFees = document.querySelector('.deliveryFees');
+let quantity1 = document.querySelector("#number");
 
 $(".deliveryFees").hide();
 
@@ -223,12 +226,14 @@ function handleAddToCart(event) {
     console.log(featureArray);
     console.log(priceArray);
     console.log(productNames);
-    console.log(productPrices);
+    // console.log(productPrices);
     console.log(deliveryFeesS);
 
 
+    let mealsNum = $("#number").attr("value");
+    productPrices = productPrices.split(":")[1] * mealsNum;
 
-    new Item(productNames, productPrices, 1, featureArray, priceArray, deliveryFeesS);
+    new Item(productNames, productPrices, mealsNum, featureArray, priceArray, deliveryFeesS);
 
     count += 1;
     spano.textContent = `${count}`;
@@ -244,8 +249,6 @@ function handleAddToCart(event) {
     $(".deliveryFees").hide();
     $("#addToCartSection").hide();
 
-
-
     model2();
 
 }
@@ -259,39 +262,105 @@ let viewOrder = document.querySelector('#viewOrder');
 let viewCartBtn = document.querySelector('#viewCartBtn');
 viewCartBtn.addEventListener('click', handleViewCart);
 
-function handleViewCart() {
+function handleViewCart(event) {
+
+
+    $("#viewCart").empty();
+    let subTotal = 0;
+    let productsSum = 0;
+    let extraSum = 0;
+    let total = 0;
 
     for (var i = 0; i < products.length; i++) {
 
-        var head1 = document.createElement('h1');
+        var head1 = document.createElement("h1");
         head1.textContent = products[i].productName;
         $("#viewCart").append(head1);
 
-        var paragraph1 = document.createElement('p');
-        paragraph1.textContent = products[i].price;
-        // paragraph1.setAttribute('class', 'productPriceView')
+        var quant = document.createElement("span");
+        quant.setAttribute("class", "quant");
+        quant.textContent = `Quantity: ${products[i].quantity}`;
+        $("#viewCart").append(quant);
+
+        var paragraph1 = document.createElement("p");
+        productsSum += products[i].price;
+        paragraph1.setAttribute("class", "pri");
+        paragraph1.textContent = `Price: ${products[i].price}`;
         $("#viewCart").append(paragraph1);
 
-
-        products[i].extra.forEach(pro => {
-            var paragraph2 = document.createElement('li');
+        products[i].extra.forEach((pro) => {
+            var paragraph2 = document.createElement("li");
             paragraph2.textContent = pro;
-            paragraph2.style.listStyle = 'none'
+            paragraph2.style.listStyle = "none";
             $("#viewCart").append(paragraph2);
-        })
+        });
 
-        products[i].extraPrice.forEach(pri => {
-            var paragraph3 = document.createElement('p');
-            paragraph3.textContent = pri;
+        products[i].extraPrice.forEach((pri) => {
+            let extraSumPrice = parseInt(pri.split(' ')[1]) * products[i].quantity;
+            extraSum += extraSumPrice;
+            console.log('extrasum', extraSumPrice);
+            var paragraph3 = document.createElement("p");
+            paragraph3.textContent = `+ ${extraSumPrice} RS`;
             $("#viewCart").append(paragraph3);
-        })
+        });
+
+        var button1 = document.createElement('button');
+        button1.setAttribute('class', 'removeProduct');
+        button1.id = i;
+        button1.textContent = `Remove`;
+        $("#viewCart").append(button1);
 
 
     }
 
+    let removeProduct = document.querySelector('.removeProduct');
+    removeProduct.addEventListener('click', handleRemoveProduct);
+
+    function handleRemoveProduct(event) {
+        console.log('clickkkkkk');
+
+        // if (event.target.textContent === 'Remove') {
+        //     products.splice(event.target.id, 1);
+        //     console.log(event.target.id);
+
+        // }
+
+        var deleteId;
+
+        if (event.target.textContent === 'Remove') {
+            deleteId = event.target.id;
+            // contT = 0;
+            products.splice(deleteId, 1);
+
+        }
+    }
+
+
+
+
+    subTotal = productsSum + extraSum;
+    console.log('subTotal :', subTotal);
+
+    var subTotalText = document.createElement('p');
+    subTotalText.textContent = `Subtotal ${subTotal}`;
+    $("#viewCart").append(subTotalText);
+
+
     var paragraph4 = document.createElement('p');
     paragraph4.textContent = products[products.length - 1].deliveryFees;
     $("#viewCart").append(paragraph4);
+
+
+
+    let delevFeesTotal = parseInt(products[0].deliveryFees.trim().split(' ')[1]);
+
+    total = subTotal + delevFeesTotal;
+    console.log('delevFeesTotal =', delevFeesTotal)
+    console.log('total =', total)
+
+    var totalprice = document.createElement('p');
+    totalprice.textContent = `Total ${total}`;
+    $("#viewCart").append(totalprice);
 
 
     var x = $("#viewCart").html();
@@ -304,35 +373,32 @@ function handleViewCart() {
 }
 
 
-let decrease = document.querySelector('#decrease');
-decrease.addEventListener('click', decreaseValue);
+
 
 
 function decreaseValue() {
-    console.log('decreeees');
-
-    var value = parseInt(document.getElementById('number').value, 10);
-    value = isNaN(value) ? 0 : value;
-    value < 1 ? value = 1 : '';
+    var value = parseInt(document.getElementById("number").value, 10);
+    value = isNaN(value) ? 1 : value;
+    value <= 1 ? (value = 1) : "";
     value--;
-    document.getElementById('number').value = value;
+    count--;
+    document.getElementById("number").value = value;
+    document.getElementById("number").setAttribute("value", value);
+    console.log("dec", $("#number").attr("value"));
+    $("#quantityDiv").html($("#number").attr("value"));
+    $("#quantityDiv").hide();
 }
 
-
-let increase = document.querySelector('#increase');
-increase.addEventListener('click', increaseValue);
-
+$("#quantityDiv").hide();
 
 function increaseValue() {
-    console.log('increeeeeeees');
-
-    var productPrices = productPriceParagraph.textContent.split(' ');
-    // new Item(productPrices);
-    productPrices *= 2;
-    console.log('pppppppppppppppppp', productPrices);
-
-    var value = parseInt(document.getElementById('number').value, 10);
-    value = isNaN(value) ? 0 : value;
+    var value = parseInt(document.getElementById("number").value, 10);
+    value = isNaN(value) ? 1 : value;
     value++;
-    document.getElementById('number').value = value;
+    count++;
+    document.getElementById("number").value = value;
+    document.getElementById("number").setAttribute("value", value);
+    console.log("inc", $("#number").attr("value"));
+    $("#quantityDiv").html($("#number").attr("value"));
+    $("#quantityDiv").hide();
 }
