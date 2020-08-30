@@ -98,13 +98,24 @@ span.onclick = function() {
 }
 
 
+// let productPage = document.querySelector("#productPage");
+// productPage.style.display = "none";
 
-$("#productPage").hide();
-$("#leftArrow").hide();
+// $("#productPage").hide();
+$("#productPage").css('display', 'none');
 
-$(".groupName").hide();
-$(".featureName2").hide();
-$("#addToCartSection").hide();
+
+// $("#leftArrow").hide();
+$("#leftArrow").css('display', 'none');
+
+// $(".groupName").hide();
+$(".groupName").css('display', 'none');
+
+// $(".featureName2").hide();
+$(".featureName2").css('display', 'none');
+
+// $("#addToCartSection").hide();
+$("#addToCartSection").css('display', 'none');
 
 
 var goBack = $(".modal-body").html();
@@ -121,7 +132,9 @@ $("#leftArrow").click(function() {
     addToCartSection.style.display = "none";
 
     model2();
-    $(".deliveryFees").hide();
+    // $(".deliveryFees").hide();
+    $(".deliveryFees").css('display', 'none');
+
     viewOrder.style.display = "none";
 
 })
@@ -163,7 +176,9 @@ function model2() {
         var x = $("#productPage").html();
         $(".modal-body").html(x);
 
-        $("#viewBascket").hide();
+        // $("#viewBascket").hide();
+        viewBascket.style.display = "none";
+
         addToCartBtn.style.display = "block";
         let decrease = document.querySelector("#decrease1");
         decrease.addEventListener("click", decreaseValue);
@@ -194,7 +209,8 @@ function Item(productName, price, quantity, extra, extraPrice, deliveryFees) {
 let viewBascket = document.querySelector('#viewBascket');
 let addToCartBtn = document.querySelector('#addToCartBtn');
 
-$("#viewCart").hide();
+// $("#viewCart").hide();
+$("#viewCart").css('display', 'none');
 
 
 addToCartBtn.addEventListener('click', handleAddToCart);
@@ -203,10 +219,12 @@ let productNameHeader = document.querySelector('#productNameHeader');
 let productPriceParagraph = document.querySelector('#productPriceParagraph');
 let deliveryFees = document.querySelector('.deliveryFees');
 let quantity1 = document.querySelector("#number");
-$("#nothingDiv").hide();
+// $("#nothingDiv").hide();
+$("#nothingDiv").css('display', 'none');
 
 
-$(".deliveryFees").hide();
+// $(".deliveryFees").hide();
+$(".deliveryFees").css('display', 'none');
 
 var spano = document.querySelector('.spano');
 var spano1 = document.querySelector('.spano1');
@@ -242,16 +260,18 @@ function handleAddToCart(event) {
 
     new Item(productNames, productPrices, mealsNum, featureArray, priceArray, deliveryFeesS);
 
+    let alQuantity = 0;
+
     products.forEach(itm => {
         alQuantity += parseInt(itm.quantity);
-        console.log(itm);
+        console.log(itm.quantity);
         console.log(alQuantity);
 
     })
+    spano1.textContent = `${alQuantity}`;
 
     // count += 1;
     // spano.textContent = `${count}`;
-    spano1.textContent = `${alQuantity}`;
 
 
     $(".modal-body").html(goBack);
@@ -260,8 +280,11 @@ function handleAddToCart(event) {
     leftArrow.style.display = "none";
     deliveryFees.style.display = "none";
     viewOrder.style.display = "none";
-    $(".deliveryFees").hide();
-    $("#addToCartSection").hide();
+    // $(".deliveryFees").hide();
+    $(".deliveryFees").css('display', 'none');
+
+    // $("#addToCartSection").hide();
+    $("#addToCartSection").css('display', 'none');
 
     model2();
 
@@ -269,7 +292,9 @@ function handleAddToCart(event) {
 
 
 
-$("#viewOrder").hide();
+// $("#viewOrder").hide();
+$("#viewOrder").css('display', 'none');
+
 let viewOrder = document.querySelector('#viewOrder');
 
 
@@ -284,6 +309,10 @@ let minOrderText = minOrderClass.textContent.trim(); // to get the text ( minimu
 console.log('minOrer number', minOrder);
 console.log(minOrderText);
 
+var subTotal = 0;
+var productsSum = 0;
+var extraSum = 0;
+var total = 0;
 
 function handleViewCart(event) {
 
@@ -291,10 +320,11 @@ function handleViewCart(event) {
         alert("Nothing in your cart");
     } else {
         $("#viewCart").empty();
-        let subTotal = 0;
-        let productsSum = 0;
-        let extraSum = 0;
-        var total = 0;
+        subTotal = 0;
+        productsSum = 0;
+        extraSum = 0;
+        total = 0;
+
 
         var minOrdPar = document.createElement("p");
         minOrdPar.setAttribute('class', 'minimunOrderPar');
@@ -322,6 +352,7 @@ function handleViewCart(event) {
 
             var paragraph1 = document.createElement("p");
             productsSum += products[i].price;
+
             paragraph1.setAttribute("class", "priceView");
             paragraph1.textContent = `Price: ${products[i].price}`;
             $("#viewCart").append(paragraph1);
@@ -343,31 +374,6 @@ function handleViewCart(event) {
             });
 
         }
-
-        function handleReviewCart(event) {
-            event.preventDefault()
-            console.log('total <= minOrder', total <= minOrder);
-            console.log('total', total);
-
-            if (total <= minOrder) {
-                console.log('pric less than minimum order');
-                let minimunOrderPar = document.querySelector('.minimunOrderPar')
-                minimunOrderPar.textContent = `${minOrderText} add more item`;
-                console.log(total);
-
-
-            } else if (total > minOrder) {
-                let minimunOrderPar = document.querySelector('.minimunOrderPar')
-                minimunOrderPar.style.display = "none";
-                console.log('pay');
-                // window.location.href = "http://www.google.com";
-                // handleRemoveProduct();
-            }
-
-
-        }
-
-
 
         subTotal = productsSum + extraSum;
         console.log('subTotal :', subTotal);
@@ -399,16 +405,47 @@ function handleViewCart(event) {
 
         var x = $("#viewCart").html();
         $(".modal-body").html(x);
-        $("#viewBascket").hide();
+        viewBascket.style.display = "none";
+
+        // $("#viewBascket").hide();
         leftArrow.style.display = "block";
         viewOrder.style.display = "block";
         let deleteProduct = document.querySelector(".modal-body");
         deleteProduct.addEventListener("click", handleRemoveProduct);
-        reviewCartBtn.addEventListener('click', handleReviewCart);
 
-
+        // handleReviewCart();
 
     }
+}
+
+
+reviewCartBtn.addEventListener('click', handleReviewCart);
+
+function handleReviewCart(event) {
+    // alert('love you')
+    event.preventDefault()
+    console.log('subtotal < minOrder', subTotal < minOrder);
+    console.log('subtotal > minOrder', subTotal > minOrder);
+
+    console.log('subTotal', subTotal);
+    console.log('**', minOrder);
+
+    if (subTotal < minOrder) {
+        console.log('pric less than minimum order');
+        let minimunOrderPar = document.querySelector('.minimunOrderPar')
+        minimunOrderPar.textContent = `${minOrderText} add more item`;
+        // console.log(total);
+
+    } else if (subTotal > minOrder) {
+        let minimunOrderPar = document.querySelector('.minimunOrderPar')
+        minimunOrderPar.style.display = "none";
+        console.log('price greater than minimun');
+        // window.location.href = "http://www.google.com";
+        // handleRemoveProduct();
+    }
+
+    console.log('**** this is me 1');
+
 }
 
 function handleRemoveProduct(event) {
@@ -425,6 +462,7 @@ function handleRemoveProduct(event) {
 
 
         if (products.length) { //  to render the exist products in the cart page
+            console.log('**** this is me 2');
             handleViewCart();
 
         } else { // if you dont have any thing in the cart 
@@ -457,10 +495,13 @@ function decreaseValue() {
     document.getElementById("number").setAttribute("value", value);
     console.log("dec", $("#number").attr("value"));
     $("#quantityDiv").html($("#number").attr("value"));
-    $("#quantityDiv").hide();
+    // $("#quantityDiv").hide();
+    $("#quantityDiv").css('display', 'none');
+
 }
 
-$("#quantityDiv").hide();
+// $("#quantityDiv").hide();
+$("#quantityDiv").css('display', 'none');
 
 function increaseValue() {
     var value = parseInt(document.getElementById("number").value, 10);
@@ -473,5 +514,7 @@ function increaseValue() {
     document.getElementById("number").setAttribute("value", value);
     console.log("inc", $("#number").attr("value"));
     $("#quantityDiv").html($("#number").attr("value"));
-    $("#quantityDiv").hide();
+    // $("#quantityDiv").hide();
+    $("#quantityDiv").css('display', 'none');
+
 }

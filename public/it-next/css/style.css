@@ -6533,6 +6533,11 @@ blockquote {
         margin-right: 10px;
         font-size: 12px;
     }
+    .minOrd {
+        padding: 0px 5px 0px 20px;
+        margin-right: 10px;
+        font-size: 12px;
+    }
     .modal-footer {
         /* padding: 2px 110px; */
         background-color: white;
