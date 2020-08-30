@@ -44,7 +44,7 @@ function Restorant(data) {
     this.city = data[0].availableBranches[0].storeDetails.city;
     this.district = data[0].availableBranches[0].storeDetails.district;
     this.deliveryTime = data[0].availableBranches[0].storeDetails.deliveryTime;
-    this.minimumOrder = data[0].availableBranches[0].storeDetails.minimumOrder;
+    this.minimumOrder = ` minimum order ${data[0].availableBranches[0].storeDetails.minimumOrder} , RS`;
     this.deliveryFees = data[0].availableBranches[0].storeDetails.deliveryFees;
     this.isEnabled = data[0].availableBranches[0].storeDetails.isEnabled;
     this.isClosed = data[0].availableBranches[0].storeDetails.isClosed;

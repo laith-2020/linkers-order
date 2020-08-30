@@ -114,20 +114,26 @@ var leftArrow = document.getElementById("leftArrow");
 
 
 $("#leftArrow").click(function() {
+
     $(".modal-body").html(goBack);
     leftArrow.style.display = "none";
+    viewBascket.style.display = "block";
     addToCartSection.style.display = "none";
 
     model2();
-    viewBascket.style.display = "block";
     $(".deliveryFees").hide();
     viewOrder.style.display = "none";
 
 })
+var count = 1;
 
 
 function model2() {
     $(".theProduct").click(function(event) {
+        count = 1;
+        spano.textContent = `${count}`;
+
+
         event.preventDefault();
         console.log("event", event.target.id);
         var productId = event.target.id;
@@ -171,11 +177,8 @@ function model2() {
 model2();
 
 
-
-
 //// add to cart 
 let products = [];
-var count = 0;
 
 function Item(productName, price, quantity, extra, extraPrice, deliveryFees) {
     this.productName = productName;
@@ -200,11 +203,15 @@ let productNameHeader = document.querySelector('#productNameHeader');
 let productPriceParagraph = document.querySelector('#productPriceParagraph');
 let deliveryFees = document.querySelector('.deliveryFees');
 let quantity1 = document.querySelector("#number");
+$("#nothingDiv").hide();
+
 
 $(".deliveryFees").hide();
 
 var spano = document.querySelector('.spano');
 var spano1 = document.querySelector('.spano1');
+
+let alQuantity = 0;
 
 function handleAddToCart(event) {
     console.log(event);
@@ -226,7 +233,7 @@ function handleAddToCart(event) {
     console.log(featureArray);
     console.log(priceArray);
     console.log(productNames);
-    // console.log(productPrices);
+    console.log(productPrices);
     console.log(deliveryFeesS);
 
 
@@ -235,9 +242,16 @@ function handleAddToCart(event) {
 
     new Item(productNames, productPrices, mealsNum, featureArray, priceArray, deliveryFeesS);
 
-    count += 1;
-    spano.textContent = `${count}`;
-    spano1.textContent = `${count}`;
+    products.forEach(itm => {
+        alQuantity += parseInt(itm.quantity);
+        console.log(itm);
+        console.log(alQuantity);
+
+    })
+
+    // count += 1;
+    // spano.textContent = `${count}`;
+    spano1.textContent = `${alQuantity}`;
 
 
     $(".modal-body").html(goBack);
@@ -262,126 +276,183 @@ let viewOrder = document.querySelector('#viewOrder');
 let viewCartBtn = document.querySelector('#viewCartBtn');
 viewCartBtn.addEventListener('click', handleViewCart);
 
+
+let minOrderClass = document.querySelector('.minOrd');
+let reviewCartBtn = document.querySelector('#reviewCartBtn');
+let minOrder = parseInt(minOrderClass.textContent.trim().split(' ')[2]); // to get the numb (minimum)
+let minOrderText = minOrderClass.textContent.trim(); // to get the text ( minimum order )
+console.log('minOrer number', minOrder);
+console.log(minOrderText);
+
+
 function handleViewCart(event) {
 
+    if (!products.length) {
+        alert("Nothing in your cart");
+    } else {
+        $("#viewCart").empty();
+        let subTotal = 0;
+        let productsSum = 0;
+        let extraSum = 0;
+        var total = 0;
 
-    $("#viewCart").empty();
-    let subTotal = 0;
-    let productsSum = 0;
-    let extraSum = 0;
-    let total = 0;
+        var minOrdPar = document.createElement("p");
+        minOrdPar.setAttribute('class', 'minimunOrderPar');
+        $("#viewCart").append(minOrdPar);
 
-    for (var i = 0; i < products.length; i++) {
 
-        var head1 = document.createElement("h1");
-        head1.textContent = products[i].productName;
-        $("#viewCart").append(head1);
+        for (var i = 0; i < products.length; i++) {
 
-        var quant = document.createElement("span");
-        quant.setAttribute("class", "quant");
-        quant.textContent = `Quantity: ${products[i].quantity}`;
-        $("#viewCart").append(quant);
+            var button1 = document.createElement('button');
+            button1.setAttribute('class', 'removeProduct');
+            button1.id = i;
+            button1.textContent = `Remove`;
+            $("#viewCart").append(button1);
 
-        var paragraph1 = document.createElement("p");
-        productsSum += products[i].price;
-        paragraph1.setAttribute("class", "pri");
-        paragraph1.textContent = `Price: ${products[i].price}`;
-        $("#viewCart").append(paragraph1);
+            var quant = document.createElement("span");
+            quant.setAttribute("class", "quant");
+            quant.textContent = `Quantity: ${products[i].quantity}`;
+            $("#viewCart").append(quant);
 
-        products[i].extra.forEach((pro) => {
-            var paragraph2 = document.createElement("li");
-            paragraph2.textContent = pro;
-            paragraph2.style.listStyle = "none";
-            $("#viewCart").append(paragraph2);
-        });
+            var head1 = document.createElement("h1");
+            head1.setAttribute("class", 'viewProdName')
+            head1.textContent = products[i].productName;
+            $("#viewCart").append(head1);
 
-        products[i].extraPrice.forEach((pri) => {
-            let extraSumPrice = parseInt(pri.split(' ')[1]) * products[i].quantity;
-            extraSum += extraSumPrice;
-            console.log('extrasum', extraSumPrice);
-            var paragraph3 = document.createElement("p");
-            paragraph3.textContent = `+ ${extraSumPrice} RS`;
-            $("#viewCart").append(paragraph3);
-        });
 
-        var button1 = document.createElement('button');
-        button1.setAttribute('class', 'removeProduct');
-        button1.id = i;
-        button1.textContent = `Remove`;
-        $("#viewCart").append(button1);
+            var paragraph1 = document.createElement("p");
+            productsSum += products[i].price;
+            paragraph1.setAttribute("class", "priceView");
+            paragraph1.textContent = `Price: ${products[i].price}`;
+            $("#viewCart").append(paragraph1);
+
+
+
+            products[i].extra.forEach((pro) => {
+                var featureNameList = document.createElement("li");
+                featureNameList.textContent = pro;
+                featureNameList.setAttribute("class", "featureNameView");
+                featureNameList.style.listStyle = "none";
+                $("#viewCart").append(featureNameList);
+            });
+
+            products[i].extraPrice.forEach((pri) => {
+                let extraSumPrice = parseInt(pri.split(' ')[1]) * products[i].quantity;
+                extraSum += extraSumPrice;
+
+            });
+
+        }
+
+        function handleReviewCart(event) {
+            event.preventDefault()
+            console.log('total <= minOrder', total <= minOrder);
+            console.log('total', total);
+
+            if (total <= minOrder) {
+                console.log('pric less than minimum order');
+                let minimunOrderPar = document.querySelector('.minimunOrderPar')
+                minimunOrderPar.textContent = `${minOrderText} add more item`;
+                console.log(total);
+
+
+            } else if (total > minOrder) {
+                let minimunOrderPar = document.querySelector('.minimunOrderPar')
+                minimunOrderPar.style.display = "none";
+                console.log('pay');
+                // window.location.href = "http://www.google.com";
+                // handleRemoveProduct();
+            }
+
+
+        }
+
+
+
+        subTotal = productsSum + extraSum;
+        console.log('subTotal :', subTotal);
+
+        var subTotalText = document.createElement('p');
+        subTotalText.setAttribute('class', 'subTotalView');
+        subTotalText.textContent = `Subtotal ${subTotal}`;
+        $("#viewCart").append(subTotalText);
+
+
+        var deliveryFeesText = document.createElement('p');
+        deliveryFeesText.setAttribute('class', 'deliveryFeesView');
+        deliveryFeesText.textContent = products[products.length - 1].deliveryFees.trim();
+        $("#viewCart").append(deliveryFeesText);
+
+
+
+        let delevFeesTotal = parseInt(products[0].deliveryFees.trim().split(' ')[1]);
+
+        total = subTotal + delevFeesTotal;
+        console.log('delevFeesTotal =', delevFeesTotal)
+        console.log('total =', total)
+
+        var totalpriceText = document.createElement('p');
+        totalpriceText.setAttribute('class', 'totalpriceView');
+        totalpriceText.textContent = `Total ${total}`;
+        $("#viewCart").append(totalpriceText);
+
+
+        var x = $("#viewCart").html();
+        $(".modal-body").html(x);
+        $("#viewBascket").hide();
+        leftArrow.style.display = "block";
+        viewOrder.style.display = "block";
+        let deleteProduct = document.querySelector(".modal-body");
+        deleteProduct.addEventListener("click", handleRemoveProduct);
+        reviewCartBtn.addEventListener('click', handleReviewCart);
+
 
 
     }
+}
 
-    let removeProduct = document.querySelector('.removeProduct');
-    removeProduct.addEventListener('click', handleRemoveProduct);
+function handleRemoveProduct(event) {
+    var deleteId;
+    console.log("clickkkkkk", event);
 
-    function handleRemoveProduct(event) {
-        console.log('clickkkkkk');
+    if (event.target.textContent === "Remove") {
+        deleteId = event.target.id;
 
-        // if (event.target.textContent === 'Remove') {
-        //     products.splice(event.target.id, 1);
-        //     console.log(event.target.id);
+        alQuantity = alQuantity - products[deleteId].quantity; // to delete the quantity number of deleted item
+        spano1.textContent = `${alQuantity}`;
 
-        // }
+        products.splice(deleteId, 1); // to delete the product from array 
 
-        var deleteId;
 
-        if (event.target.textContent === 'Remove') {
-            deleteId = event.target.id;
-            // contT = 0;
-            products.splice(deleteId, 1);
+        if (products.length) { //  to render the exist products in the cart page
+            handleViewCart();
+
+        } else { // if you dont have any thing in the cart 
+            let nothingDiv = $("#nothingDiv").html();
+            $(".modal-body").html(nothingDiv);
+            leftArrow.style.display = "block";
+            viewOrder.style.display = "none";
+
 
         }
     }
-
-
-
-
-    subTotal = productsSum + extraSum;
-    console.log('subTotal :', subTotal);
-
-    var subTotalText = document.createElement('p');
-    subTotalText.textContent = `Subtotal ${subTotal}`;
-    $("#viewCart").append(subTotalText);
-
-
-    var paragraph4 = document.createElement('p');
-    paragraph4.textContent = products[products.length - 1].deliveryFees;
-    $("#viewCart").append(paragraph4);
-
-
-
-    let delevFeesTotal = parseInt(products[0].deliveryFees.trim().split(' ')[1]);
-
-    total = subTotal + delevFeesTotal;
-    console.log('delevFeesTotal =', delevFeesTotal)
-    console.log('total =', total)
-
-    var totalprice = document.createElement('p');
-    totalprice.textContent = `Total ${total}`;
-    $("#viewCart").append(totalprice);
-
-
-    var x = $("#viewCart").html();
-    $(".modal-body").html(x);
-    $("#viewBascket").hide();
-    leftArrow.style.display = "block";
-    viewOrder.style.display = "block";
-
-
 }
 
 
-
+let mainBody = $(".modal-body").html();
 
 
 function decreaseValue() {
     var value = parseInt(document.getElementById("number").value, 10);
-    value = isNaN(value) ? 1 : value;
-    value <= 1 ? (value = 1) : "";
+    value = isNaN(value) ? 2 : value;
+    value <= 2 ? (value = 2) : "";
     value--;
-    count--;
+    if (count > 1) {
+        count--;
+        spano.textContent = `${count}`;
+
+    }
+
     document.getElementById("number").value = value;
     document.getElementById("number").setAttribute("value", value);
     console.log("dec", $("#number").attr("value"));
@@ -393,9 +464,11 @@ $("#quantityDiv").hide();
 
 function increaseValue() {
     var value = parseInt(document.getElementById("number").value, 10);
-    value = isNaN(value) ? 1 : value;
+    value = isNaN(value) ? 2 : value;
     value++;
     count++;
+    spano.textContent = `${count}`;
+
     document.getElementById("number").value = value;
     document.getElementById("number").setAttribute("value", value);
     console.log("inc", $("#number").attr("value"));

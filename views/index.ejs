@@ -363,7 +363,9 @@
                 <p class="deliveryTime">
                     <i class="far fa-clock"></i> Delivery Time :
                     <%=resultKey.deliveryTime %> Min <i class="fas fa-shopping-bag"></i>
-                        <%=resultKey.minimumOrder %> RS , Minimum Order
+                        <p class="minOrd">
+                            <%=resultKey.minimumOrder %>
+                        </p>
                 </p>
                 <div class="stickeNav">
 
@@ -386,7 +388,7 @@
                     <li id="<%=key%>" class="categName">
                         <%=key%>
                             <%productKey.map((item,idx) => {%>
-                                <div id="<%=item.productName.replace(/\s/g, '')%>" class="theProduct productC">
+                                <div id="<%=item.productName.replace(/\s/g, '')%>" class="theProduct ">
                                     <% if(item.category === key){ %>
 
 
@@ -399,7 +401,7 @@
                                         <p id="<%=item.productName.replace(/\s/g, '')%>" class="productDesc">
                                             <%=item.description%>
                                         </p>
-                                        <p id="<%=item.productName.replace(/\s/g, '')%>" class="productC " style="color: black; padding-left:27px;">
+                                        <p id="<%=item.productName.replace(/\s/g, '')%>" class="" style="color: black; padding-left:27px;">
 
                                             <span class="productPrice"><%=item.price%></span>
                                         </p>
@@ -418,7 +420,7 @@
                                                     <%=itm%>
 
                                                         <div id="thePrice">
-                                                            <span class="productC"> <%=item.extraPrice[idx]%> </span>
+                                                            <span class=""> <%=item.extraPrice[idx]%> </span>
                                                         </div>
                                                         <br>
                                                         <br>
@@ -440,20 +442,20 @@
 
                 <section id="addToCartSection">
 
-                    <button id="addToCartBtn" class="cartBtn productC">
-                        <span>Add To Cart</span>
+                    <button id="addToCartBtn" class="cartBtn ">
+                        <span>Add <span class="spano"></span> To Cart</span>
                         <svg width="13px" height="10px" viewBox="0 0 13 10">
                             <path d="M1,5 L11,5"></path>
                             <polyline points="8 1 12 5 8 9"></polyline>
                         </svg>
-                        <i id="chartIcon" style="font-size:24px" class="fa">&#xf07a;</i><span class="spano"></span>
+                        <i id="chartIcon" style="font-size:24px" class="fa">&#xf07a;</i>
 
                     </button>
 
                 </section>
 
                 <section id="viewBascket">
-                    <button id="viewCartBtn" class="cartBtn productC">
+                    <button id="viewCartBtn" class="cartBtn ">
                         <span>View Cart</span>
                         <svg width="13px" height="10px" viewBox="0 0 13 10">
                             <path d="M1,5 L11,5"></path>
@@ -466,7 +468,7 @@
                 </section>
 
                 <section id="viewOrder">
-                    <button id="viewCartBtn" class="cartBtn productC">
+                    <button id="reviewCartBtn" class="cartBtn ">
                         <span>review order</span>
                         <svg width="13px" height="10px" viewBox="0 0 13 10">
                             <path d="M1,5 L11,5"></path>
@@ -491,7 +493,7 @@
         <p id="groupName"></p>
 
         <form>
-            <label id="features" class="featureName productC"> </label>
+            <label id="features" class="featureName "> </label>
 
         </form>
 
@@ -508,13 +510,13 @@
 
 
     <div id="viewCart">
-        <!-- 
-            <h1 style="width: 67%;" class="productName3"></h1>
-            <p class="productPrice3"></p>
-            <p class="extraPrice"></p>
-            <p class="deliveryFees"></p> -->
+
     </div>
 
+
+    <div id="nothingDiv">
+        <p class="nothingMessage">Your cart is empty.. use the arrow to get back to the mune</p>
+    </div>
 
 
 

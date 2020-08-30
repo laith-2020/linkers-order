@@ -6149,7 +6149,7 @@ blockquote {
         font-size: 16px;
         line-height: 18px;
         font-weight: 900;
-        font-size: 1em;
+        /* font-size: 1em; */
     }
     .cartBtn svg {
         position: relative;
@@ -6355,7 +6355,7 @@ blockquote {
         font-size: 16px;
         line-height: 18px;
         font-weight: 900;
-        font-size: 1em;
+        /* font-size: 1em; */
     }
     .cartBtn svg {
         position: relative;
@@ -6448,6 +6448,7 @@ blockquote {
     .modal-body {
         /* padding: 2px 16px; */
         /* height: 1000px; */
+        /* height: 91vh; */
         background-color: white;
     }
     .shopName {
@@ -6561,7 +6562,7 @@ blockquote {
         font-size: 16px;
         line-height: 18px;
         font-weight: 900;
-        font-size: 1em;
+        /* font-size: 1em; */
     }
     .cartBtn svg {
         position: relative;
@@ -6587,6 +6588,46 @@ blockquote {
     .cartBtn:active {
         transform: scale(0.96);
         box-sizing: border-box;
+    }
+    /* #viewCart {
+        height: 100%;
+    } */
+    .viewProdName {
+        width: 74%;
+        padding: 32px 0px 26px 30px;
+        font-weight: bold;
+    }
+    .quant {
+        float: right;
+        padding: 38px 2px 24px 2px;
+    }
+    .priceView {
+        color: #222;
+        font-weight: 400;
+        padding: 0px 0px 13px 30px;
+    }
+    .removeProduct {
+        float: right;
+        margin: 38px 41px 23px 18px;
+    }
+    .featureNameView {
+        width: 50%;
+        margin: 0px 0px 7px 30px;
+    }
+    .extraPriceView {
+        width: 50%;
+        float: right;
+    }
+    .subTotalView {
+        padding: 135px 0px 0px 30px;
+    }
+    .deliveryFeesView {
+        padding: 0px 0px 0px 30px;
+    }
+    .totalpriceView {
+        padding: 0px 0px 0px 30px;
+        color: #222;
+        font-weight: 400;
     }
 }
 
@@ -6682,9 +6723,10 @@ blockquote {
 /* ////// quantity inc & dec ////  */
 
 .quantityForm {
-    float: right;
-    width: 30%;
-    padding-top: 5px;
+    width: 100%;
+    margin: auto auto;
+    /* padding: 55px 9px 28px 172px; */
+    text-align: center;
 }
 
 .value-button {
@@ -6706,6 +6748,7 @@ blockquote {
 
 .value-button:hover {
     cursor: pointer;
+    background: #a6c627;
 }
 
 .quantityForm #decrease {
