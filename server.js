@@ -3,13 +3,17 @@
 require("dotenv").config();
 const express = require("express");
 const superagent = require("superagent");
-const { get } = require("superagent");
+const {
+    get
+} = require("superagent");
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.static("./public"));
 app.set("view engine", "ejs");
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+    extended: true
+}));
 
 let arr = ['hello'];
 
@@ -19,15 +23,15 @@ let arr = ['hello'];
 
 app.get('/', (req, res) => {
 
-
-    let url = `http://orderlink.linkers.io:8096/Landing/GetMenu/?storeManagerId=5e97b15d02c81e1547ca5c8d`;
+    let url = `http://orderlink.linkers.io:8096/Landing/GetMenu/?storeManagerId=5e937bdde6b6e407eb196661`;
     superagent.get(url)
         .then((result) => {
+            console.log(result.body);
 
             var array = [];
             let resultData = result.body.map(item => {
-                array.push(item.category); //To store the keywords for the options
-                array = array.filter(function(item, index, inputArray) { //Filter to delet the repeated keywords;
+                array.push(item.category); //To store the 
+                array = array.filter(function(item, index, inputArray) { //Filter to delet the repeated 
                     return inputArray.indexOf(item) == index;
                 });
                 return new Category(item);

@@ -114,6 +114,9 @@ $(".groupName").css('display', 'none');
 // $(".featureName2").hide();
 $(".featureName2").css('display', 'none');
 
+$("#featureName").css('display', 'none');
+
+
 // $("#addToCartSection").hide();
 $("#addToCartSection").css('display', 'none');
 
@@ -145,7 +148,6 @@ function model2() {
     $(".theProduct").click(function(event) {
         count = 1;
         spano.textContent = `${count}`;
-
 
         event.preventDefault();
         console.log("event", event.target.id);
@@ -180,6 +182,7 @@ function model2() {
         viewBascket.style.display = "none";
 
         addToCartBtn.style.display = "block";
+
         let decrease = document.querySelector("#decrease1");
         decrease.addEventListener("click", decreaseValue);
         let increase = document.querySelector("#increase1");
@@ -260,9 +263,10 @@ function handleAddToCart(event) {
 
     new Item(productNames, productPrices, mealsNum, featureArray, priceArray, deliveryFeesS);
 
-    let alQuantity = 0;
+    alQuantity = 0;
 
     products.forEach(itm => {
+
         alQuantity += parseInt(itm.quantity);
         console.log(itm.quantity);
         console.log(alQuantity);
@@ -422,35 +426,29 @@ function handleViewCart(event) {
 reviewCartBtn.addEventListener('click', handleReviewCart);
 
 function handleReviewCart(event) {
-    // alert('love you')
     event.preventDefault()
-    console.log('subtotal < minOrder', subTotal < minOrder);
-    console.log('subtotal > minOrder', subTotal > minOrder);
 
-    console.log('subTotal', subTotal);
-    console.log('**', minOrder);
+    // console.log('subTotal', subTotal);
+    // console.log('**', minOrder);
 
     if (subTotal < minOrder) {
         console.log('pric less than minimum order');
         let minimunOrderPar = document.querySelector('.minimunOrderPar')
         minimunOrderPar.textContent = `${minOrderText} add more item`;
-        // console.log(total);
 
     } else if (subTotal > minOrder) {
         let minimunOrderPar = document.querySelector('.minimunOrderPar')
         minimunOrderPar.style.display = "none";
         console.log('price greater than minimun');
         // window.location.href = "http://www.google.com";
-        // handleRemoveProduct();
     }
-
-    console.log('**** this is me 1');
 
 }
 
+
+
 function handleRemoveProduct(event) {
     var deleteId;
-    console.log("clickkkkkk", event);
 
     if (event.target.textContent === "Remove") {
         deleteId = event.target.id;
@@ -470,6 +468,20 @@ function handleRemoveProduct(event) {
             $(".modal-body").html(nothingDiv);
             leftArrow.style.display = "block";
             viewOrder.style.display = "none";
+            $(".gobackAdd").click(function() {
+
+                $(".modal-body").html(goBack);
+                leftArrow.style.display = "none";
+                viewBascket.style.display = "block";
+                addToCartSection.style.display = "none";
+
+                model2();
+                // $(".deliveryFees").hide();
+                $(".deliveryFees").css('display', 'none');
+
+                viewOrder.style.display = "none";
+
+            })
 
 
         }

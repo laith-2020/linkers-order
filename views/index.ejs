@@ -350,6 +350,7 @@
                 <br>
                 <h1 class="shopName">
                     <%=resultKey.shopName %>
+
                 </h1>
                 <p class="cityName">
                     <i class="fas fa-map-marker-alt"></i>
@@ -362,8 +363,9 @@
                 </p>
                 <p class="deliveryTime">
                     <i class="far fa-clock"></i> Delivery Time :
-                    <%=resultKey.deliveryTime %> Min <i class="fas fa-shopping-bag"></i>
+                    <%=resultKey.deliveryTime %> Min
                         <p class="minOrd">
+                            <i class="fas fa-shopping-bag"></i>
                             <%=resultKey.minimumOrder %>
                         </p>
                 </p>
@@ -412,6 +414,7 @@
 
 
                                         <form class="featureName2">
+                                            <input type="checkbox" id="featureName" class="hiddenInput" name="featureName">
                                             <%if(item.featureName[0] !== ''){%>
                                                 <%item.featureName.forEach ((itm,idx) =>{%>
 
@@ -515,7 +518,9 @@
 
 
     <div id="nothingDiv">
-        <p class="nothingMessage">Your cart is empty.. use the arrow to get back to the mune</p>
+        <i id="emptyImg" class="fas fa-shopping-bag"></i>
+        <p class="nothingMessage">Your cart is empty.. </p>
+        <a class="gobackAdd" href="#">Add More Item</a>
     </div>
 
 
